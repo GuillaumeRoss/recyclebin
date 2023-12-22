@@ -1,5 +1,5 @@
 +++
-title = "AutoSpill the beans: it’s not THAT big a deal”
+title = "AutoSpill the beans: not THAT big a deal"
 date = "2023-12-22"
 author = "Guillaume Ross"
 description = "The AutoSpill vulnerability has been discussed in social media and on online publications. Scaring people from using password managers is net-negative."
