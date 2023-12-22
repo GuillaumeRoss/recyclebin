@@ -1,6 +1,6 @@
 +++
 title = "Security checklist for families using Apple devices"
-date = "2023-05-12"
+date = "2023-12-22"
 author = "Guillaume Ross"
 description = "Security checklist for families using Apple devices"
 +++
