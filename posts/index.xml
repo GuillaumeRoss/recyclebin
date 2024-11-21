@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>©Guillaume Ross</copyright><lastBuildDate>Fri, 04 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Before Preaching, Stop Punching Yourself</title><link>https://recyclebin.zip/posts/2024-10-04-awareness-month/</link><pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-10-04-awareness-month/</guid><description>&lt;p>&lt;em>Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself">JupiterOne blog&lt;/a>.&lt;/em>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en</language><copyright>©Guillaume Ross</copyright><lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Apple: Let us be Polymacous</title><link>https://recyclebin.zip/posts/2024-10-04-awareness-month-copy/</link><pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-10-04-awareness-month-copy/</guid><description>&lt;p>Apple&amp;rsquo;s focus on security and privacy is making them release features that only work on devices on the same iCloud account, which will counterintuitively hurt people&amp;rsquo;s privacy as they log in to personal iCloud accounts on devices owned by their employers. As the Apple &lt;em>blogosphere&lt;/em> is dominated by very good independant writers, this is an issue that is rarely discussed, as it impacts people working for larger organizations with dedicated Mac hardware.&lt;/p>
+&lt;p>It took Apple years to enable family photo sharing in Photos, as if all users managed photos individually. Eventually, they delivered a solid feature for shared family libraries. Before they did, people were sharing photos using third party applications, and in many cases, reducing their own privacy levels by involving more companies in the process.&lt;/p>
+&lt;p>Similarly, Apple seems to assume we all use a single Mac tied to the same iCloud account as our iPhone, Apple Watch, iPad, and Vision Pro, leading to people performing actions that degrade their own privacy.&lt;/p>
+&lt;p>The &lt;a href="https://www.apple.com/ca/pro-display-xdr/specs/">Pro Display XDR&lt;/a> and &lt;a href="https://www.apple.com/ca/studio-display/specs/">Studio Display&lt;/a>, released in 2019 and 2022 respectively, have a single input. &lt;a href="https://support.apple.com/en-us/105126">Target Display Mode&lt;/a> hasn&amp;rsquo;t been a thing since 2014.&lt;/p>
+&lt;p>This creates a dilemma for those needing both a personal and work Mac: use non-Apple monitors, dedicate significant desk space to a single-use Apple display, or manually switch cables, since Thunderbolt switching remains uncommon and expensive.&lt;/p>
+&lt;p>Except for Dell&amp;rsquo;s &lt;a href="https://www.dell.com/en-ca/shop/dell-ultrasharp-32-6k-monitor-u3224kb/apd/210-bhbz/monitors-monitor-accessories">weird looking&lt;/a> 6K monitor, there aren&amp;rsquo;t many great high resolution monitors on the market. The gaming monitor market is doing great, but those monitors are quite different from what is ideal to do work.&lt;/p>
+&lt;p>Software could help. &lt;a href="https://support.apple.com/en-us/102459">Universal Control&lt;/a> could let you work across two separate Macs easily. But on the software side, the situation is the same, Apple still believes you don&amp;rsquo;t have a job.&lt;/p>
+&lt;p>You might not want &lt;a href="https://support.apple.com/en-ca/102426">Handoff&lt;/a> to propose opening up your personal Safari tabs on your work computer, and your employer might not want you to use &lt;a href="https://support.apple.com/en-us/102442">Watch Unlock&lt;/a> from your personal watch to their laptop.&lt;/p>
+&lt;p>Still, camera and screen streaming features such as &lt;a href="https://support.apple.com/en-us/102546">Continuity Camera&lt;/a>, &lt;a href="https://support.apple.com/en-us/102597">SideCar&lt;/a> and &lt;a href="https://support.apple.com/en-us/118521">Mac Virtual Display&lt;/a> which could be extremely useful, but instantly become pointless when you realize you have to be on the same iCloud account on both devices.&lt;/p>
+&lt;p>While privacy and security concerns justified limiting these features to a single iCloud account, both wireless and wired connections are supported, and Apple excels as implementing secure solutions to complex problems.&lt;/p>
+&lt;p>Why not let me use Sidecar with my personal iPad over USB? The connection could enable screen transfer only, respecting MDM restrictions and preventing actions like data transfer.&lt;/p>
+&lt;p>Continuity Camera could work similarly, streaming my iPhone’s “webcam” to my work Mac via USB.&lt;/p>
+&lt;p>Mac Virtual Display on visionOS is, for me, the killer app on visionOS. Even with a developer strap, Vision Pro could justify its presence in my travel bag by serving as a computer with personal apps that can also be used as a massive monitor for hotel work. Because of the current restrictions, the Vision Pro becomes much less useful as I do not have a mouse and keyboard for it with me, but I need to travel with an extra monitor or iPad with a &lt;a href="https://astropad.com/product/lunadisplay/">third party dongle&lt;/a>.&lt;/p>
+&lt;p>Today, only independent developers, bloggers, and consultants with all devices on a single iCloud account can achieve this—unless they compromise privacy by logging into iCloud on a work Mac.&lt;/p>
+&lt;p>I doubt Apple will make a multi-input monitor, but they could build secure implementations of these features, with MDM controls for organizations to disable them.&lt;/p>
+&lt;p>Please Apple, make our personal devices feel lighter and more useful in our bags when we travel for work, and most of all, &lt;strong>stop creating a situation that undoubtedly pushes people to log in to work Macs with their personal iCloud accounts&lt;/strong>.&lt;/p>
+&lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
+async src="//gc.zgo.at/count.js">&lt;/script></description></item><item><title>Before Preaching, Stop Punching Yourself</title><link>https://recyclebin.zip/posts/2024-10-04-awareness-month/</link><pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-10-04-awareness-month/</guid><description>&lt;p>&lt;em>Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself">JupiterOne blog&lt;/a>.&lt;/em>&lt;/p>
 &lt;p>Some seem to love Cyber Security Awareness Month. Of course, at least as many despise it, because it makes no sense to have intense focus for one month and then forget about it for the other 11.&lt;/p>
 &lt;p>Without saying if I love it or if I hate it, I decided to write a set of rules. If any of this is a problem in your organization, you HAVE to fix it before you are allowed to fill up user’s inboxes with more “awareness”.&lt;/p>
 &lt;p>Have you recently told someone working in HR to not open attachments in email? Have you told someone to not click things on the &lt;a href="https://x.com/swagitda_/status/1503751776134180873">thing-clicking machine&lt;/a>?&lt;/p>
@@ -46,30 +63,30 @@ Apple Intelligence shows up in iOS 18.1 and macOS 15.1, so you can prepare.&lt;/
 &lt;table>
 &lt;thead>
 &lt;tr>
-&lt;th style="text-align: left">Setting&lt;/th>
-&lt;th style="text-align: left">Description&lt;/th>
+&lt;th>Setting&lt;/th>
+&lt;th>Description&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align: left">allowGenmoji&lt;/td>
-&lt;td style="text-align: left">If false, prohibits creating new Genmoji. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
+&lt;td>allowGenmoji&lt;/td>
+&lt;td>If false, prohibits creating new Genmoji. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align: left">allowImagePlayground&lt;/td>
-&lt;td style="text-align: left">If false, prohibits the use of image generation. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
+&lt;td>allowImagePlayground&lt;/td>
+&lt;td>If false, prohibits the use of image generation. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align: left">allowImageWand&lt;/td>
-&lt;td style="text-align: left">If false, prohibits the use of Image Wand. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
+&lt;td>allowImageWand&lt;/td>
+&lt;td>If false, prohibits the use of Image Wand. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align: left">allowPersonalizedHandwritingResults&lt;/td>
-&lt;td style="text-align: left">If false, prevents the system from generating text in the user’s handwriting. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
+&lt;td>allowPersonalizedHandwritingResults&lt;/td>
+&lt;td>If false, prevents the system from generating text in the user’s handwriting. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align: left">allowWritingTools&lt;/td>
-&lt;td style="text-align: left">If false, disables Apple Intelligence writing tools. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
+&lt;td>allowWritingTools&lt;/td>
+&lt;td>If false, disables Apple Intelligence writing tools. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
