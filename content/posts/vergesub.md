@@ -25,3 +25,5 @@ Here are the very manual, not-at-all scientific results:
 Even with a subscription, The Verge still drowns you in ads and trackers—just slightly fewer. Their privacy policy mentions **865** data partners (**533** claiming “strictly necessary” cookies).
 
 For that reason, I'd recommend not allow listing them in your ad blocker even if you are a paid customer, but it might make you feel better knowing they get revenue even though you're blocking the ads?
+
+{{< goatcounter >}}
