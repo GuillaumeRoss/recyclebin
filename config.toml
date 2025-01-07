@@ -1,7 +1,7 @@
 baseurl = "https://recyclebin.zip/"
 languageCode = "en-us"
 theme = "terminal"
-paginate = 5
+ignoreLogs = ['warning-goldmark-raw-html']
 
 [params]
   contentTypeName = "posts"
@@ -26,6 +26,9 @@ paginate = 5
     missingBackButtonLabel = "Back to home page"
     minuteReadingTime = "min read"
     words = "words"
+    disableAliases = true
+    pagerSize = 10
+    path = 'page'
 
     [languages.en.params.logo]
       logoText = "Recyclebin.zip"
