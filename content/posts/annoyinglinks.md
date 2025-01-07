@@ -37,5 +37,7 @@ While this sucks, it at least allows you to easily log in in situations where yo
 
 If you insist on using magic/tragic links by default, at least consider offering a robust alternative, such as [passkeys](https://fidoalliance.org/passkeys/), especially if your audience is technical and privacy-focused.
 
+_Update: This great post by Ricky Mondello was pointed out to me and explains how passkeys can make this better. I highly recommend reading it._ [Magic Links Have Rough Edges, but Passkeys Can Smooth Them Over](https://rmondello.com/2025/01/02/magic-links-and-passkeys/)
+
 
 {{< goatcounter >}}
