@@ -2,37 +2,40 @@ baseurl = "https://recyclebin.zip/"
 languageCode = "en-us"
 theme = "terminal"
 ignoreLogs = ['warning-goldmark-raw-html']
+pagination.pagerSize = 5
+
 
 [params]
   contentTypeName = "posts"
-  themeColor = "red"
+  themeColor = "purple"
   showMenuItems = 4
   fullWidthTheme = false
   centerTheme = false
-  showLastUpdated = false
+  showLastUpdated = true
 
 [languages]
   [languages.en]
-    title = "Recyclebin.zip"
-    subtitle = "All the posts you were about to delete, nicely zipped up"
-    keywords = "Blog, cyber security, security, infosec, cybersecurity, cloud security, technology, IT security"
-    copyright = "©Guillaume Ross"
-    menuMore = "Show more"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    missingContentMessage = "Page not found..."
-    missingBackButtonLabel = "Back to home page"
-    minuteReadingTime = "min read"
-    words = "words"
-    disableAliases = true
-    pagerSize = 10
-    path = 'page'
+    languageName = "English"
+    title = "Terminal"
 
-    [languages.en.params.logo]
-      logoText = "Recyclebin.zip"
-      logoHomeLink = "/"
+    [languages.en.params]
+      subtitle = "A simple, retro theme for Hugo"
+      owner = ""
+      keywords = ""
+      copyright = ""
+      menuMore = "Show more"
+      readMore = "Read more"
+      readOtherPosts = "Read other posts"
+      newerPosts = "Newer posts"
+      olderPosts = "Older posts"
+      missingContentMessage = "Page not found..."
+      missingBackButtonLabel = "Back to home page"
+      minuteReadingTime = "min read"
+      words = "words"
+
+      [languages.en.params.logo]
+        logoText = "Recyclebin.zip"
+        logoHomeLink = "/"
 
     [languages.en.menu]
         [[languages.en.menu.main]]
