@@ -1,6 +1,6 @@
 +++
 title = "Magic/Tragic Email Links: Don't make them the only option"
-date = "2025-01-06"
+date = "2025-01-07"
 author = "Guillaume Ross"
 description = "Subscription websites now like to use magic email links for login. They are extremely annoying."
 +++
