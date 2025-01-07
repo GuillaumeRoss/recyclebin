@@ -11,15 +11,16 @@ pagination.pagerSize = 5
   showMenuItems = 4
   fullWidthTheme = false
   centerTheme = false
-  showLastUpdated = true
+  showLastUpdated = false
+
 
 [languages]
   [languages.en]
     languageName = "English"
-    title = "Terminal"
+    title = "Recyclebin.zip"
 
     [languages.en.params]
-      subtitle = "A simple, retro theme for Hugo"
+      subtitle = "Recyclebin.zip - a garbage blog on a garbage gTLD"
       owner = ""
       keywords = ""
       copyright = ""
