@@ -1,12 +1,174 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 07 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Magic/Tragic Email Links: Don't make them the only option</title><link>https://recyclebin.zip/posts/annoyinglinks/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/annoyinglinks/</guid><description>&lt;p>The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link">futuristic PDA&lt;/a>. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link">Auth0&lt;/a> use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 13 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MacBook YubiKey induced insomnia</title><link>https://recyclebin.zip/posts/yubisleep/</link><pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/yubisleep/</guid><description>&lt;p>Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p>
+&lt;p>You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Post&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;th>Date&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/">Reddit Discussion&lt;/a>&lt;/td>
+&lt;td>Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td>
+&lt;td>2021-01-03&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567">Mac Power Users Forum&lt;/a>&lt;/td>
+&lt;td>A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td>
+&lt;td>2022-09-05&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/">Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a>&lt;/td>
+&lt;td>Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td>
+&lt;td>2021-01-03&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p></description><content>&lt;p>Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p>
+&lt;p>You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Post&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;th>Date&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/">Reddit Discussion&lt;/a>&lt;/td>
+&lt;td>Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td>
+&lt;td>2021-01-03&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567">Mac Power Users Forum&lt;/a>&lt;/td>
+&lt;td>A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td>
+&lt;td>2022-09-05&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/">Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a>&lt;/td>
+&lt;td>Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td>
+&lt;td>2021-01-03&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p>
+&lt;h2 id="cause">Cause&lt;/h2>
+&lt;p>After testing, on a 16-inch MacBook Pro with M1 Pro with a battery that&amp;rsquo;s in great condition, and noticing the issue on other MacBooks (Intel and Apple Silicon), I decided to do a bit of research.&lt;/p>
+&lt;p>At first, I thought it could be related to &lt;a href="https://en.wikipedia.org/wiki/Endpoint_detection_and_response">EDR&lt;/a> or &lt;a href="https://en.wikipedia.org/wiki/Data_loss_prevention_software">DLP&lt;/a> software.&lt;/p>
+&lt;p>To rule that out, these tests were done on a Mac with a fresh install done on 15.0, now running 15.3 without any &lt;del>rootkits&lt;/del> highly privileged closed source endpoint security tools.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Time Period&lt;/th>
+&lt;th>Condition&lt;/th>
+&lt;th>Battery Percentage Lost&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>~12 hours&lt;/td>
+&lt;td>No YubiKey&lt;/td>
+&lt;td>0%&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>15 hours&lt;/td>
+&lt;td>YubiKey with FIDO and CCID enabled&lt;/td>
+&lt;td>25%&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>48 hours&lt;/td>
+&lt;td>YubiKey with FIDO enabled&lt;/td>
+&lt;td>10%&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>These tests weren&amp;rsquo;t very scientific, but enough to guess that:&lt;/p>
+&lt;ol>
+&lt;li>The issue is not the key using the power, as I can&amp;rsquo;t really see how such a small device would use 25% of a laptop&amp;rsquo;s battery without even getting warm, so it must be sleep related.&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/CCID_%28protocol%29">CCID&lt;/a> was making things significantly worse. It was enabled as I use &lt;a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">OpenPGP&lt;/a> on my keys, usually to sign git commits.&lt;/li>
+&lt;/ol>
+&lt;p>To avoid &lt;a href="https://www.micahwalter.com/2021/03/yubisneezes/">Yubisneezes&lt;/a>, I had already disabled OTP, which for some weird reason is somehow stil enabled by default on YubiKeys.&lt;/p>
+&lt;p>A quick look through sleep logs/pmset output showed a variety of events happening roughly every &lt;strong>12 seconds!&lt;/strong>, with the laptop sometimes awake for up to 6 seconds.&lt;/p>
+&lt;p>&lt;code>2025-02-07 07:00:21.975301-0500 0x2cb806 Default 0x0 2351 0 PowerChime: 237653.924112: GOING TO SLEEP: kStateDarkWake -&amp;gt; kStateAsleep &lt;/code>&lt;/p>
+&lt;p>Here are 7 seconds of &lt;code>pmset&lt;/code> logs:&lt;/p>
+&lt;pre tabindex="0">&lt;code>2025-02-07 07:00:00 -0500 WakeTime WakeTime: 0.329 sec
+2025-02-07 07:00:00 -0500 Kernel Client Acks Delays to Wake notifications: [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(101 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(134 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [Codec Output driver is slow(msg: DidChangeState to 1)(79 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(132 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(136 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(276 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [AppleCS42L84Audio driver is slow(msg: DidChangeState to 1)(77 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(134 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(274 ms)] [Port-USB-C driver is slow(msg: SetState to 1)(51 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(132 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(135 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(140 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(275 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(134 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(274 ms)] [AppleCS42L84Audio driver is slow(msg: DidChangeState to 1)(75 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(75 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(133 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)]
+2025-02-07 07:00:00 -0500 Assertions PID 445(mDNSResponder) Released MaintenanceWake &amp;#34;mDNSResponder:maintenance&amp;#34; 00:00:00 id:0x0xd000081bd [System: PrevIdle PushSrvc SRPrevSleep kCPU]
+2025-02-07 07:00:02 -0500 com.apple.sleepservices.sessionTerminated SleepService: window has terminated.
+2025-02-07 07:00:05 -0500 Assertions PID 325(powerd) Released InternalPreventSleep &amp;#34;PM configd - Wait for Device enumeration&amp;#34; 00:00:05 id:0x0xd000081bf [System: No Assertions]
+2025-02-07 07:00:05 -0500 Sleep Entering Sleep state due to &amp;#39;Maintenance Sleep&amp;#39;:TCPKeepAlive=active Using Batt (Charge:76%) 2 secs
+2025-02-07 07:00:06 -0500 Wake Requests [*process=dasd request=SleepService deltaSecs=960 wakeAt=2025-02-07 07:16:07 info=&amp;#34;com.apple.dasd:501:com.apple.duetexpertd.everydayshortcuts&amp;#34;] [process=mDNSResponder request=Maintenance deltaSecs=7198 wakeAt=2025-02-07 09:00:05 info=&amp;#34;upkeep wake&amp;#34;] [process=powerd request=TCPKATurnOff deltaSecs=266490 wakeAt=2025-02-10 09:01:36] [process=powerd request=CSPNEvaluation deltaSecs=6463 wakeAt=2025-02-07 08:47:49] [process=powerd request=UserWake deltaSecs=4793 wakeAt=2025-02-07 08:20:00 info=&amp;#34;com.apple.alarm.user-invisible-com.apple.calaccessd.alarmEngine.alarm.name,597&amp;#34;]
+2025-02-07 07:00:06 -0500 PM Client Acks Delays to Sleep notifications: [com.apple.bluetooth.sleep is slow(1544 ms)]
+2025-02-07 07:00:07 -0500 Assertions PID 445(mDNSResponder) Created MaintenanceWake &amp;#34;mDNSResponder:maintenance&amp;#34; 00:00:00 id:0x0xd000081c4 [System: No Assertions]
+2025-02-07 07:00:07 -0500 Assertions PID 325(powerd) Created InternalPreventSleep &amp;#34;PM configd - Wait for Device enumeration&amp;#34; 00:00:00 id:0x0xd000081c6 [System: PrevIdle]
+2025-02-07 07:00:07 -0500 com.apple.sleepservices.sessionStarted SleepService: window begins with cap time=180 secs
+2025-02-07 07:00:07 -0500 DarkWake DarkWake from Deep Idle [CDNP] : due to SMC.OutboxNotEmpty smc.70070000 wifibt/ Using BATT (Charge:76%) 7 secs
+2025-02-07 07:00:07 -0500 WakeDetails DriverReason:SMC.OutboxNotEmpty - DriverDetails:
+2025-02-07 07:00:07 -0500 WakeTime WakeTime: 0.343 sec
+&lt;/code>&lt;/pre>&lt;h3 id="yubico-response">Yubico response&lt;/h3>
+&lt;blockquote>
+&lt;p>We have investigated this and have given our results to Apple. The issue is how Apple deals with smart cards. FIDO/PIV/PGP use the CCID interface that uses the smart card service. Apple architecture causes the smart card service to be put to sleep and once a heartbeat goes to the usb device to check, it will then have to reactivate, for smart cards such as PIV and PGP this happens more often than FIDO standard. This however, is all in MacOS software and not related to the YubiKey. There is not a way for us to change our firmware and still function within the standard. Apple has this information but has not provided us with a timeline nor any change or expected solution.&lt;/p>&lt;/blockquote>
+&lt;p>This issue would therefore also occur with other types of smartcard readers on macOS, but they&amp;rsquo;re rare, especially in form factors someone would leave connected to a laptop.&lt;/p>
+&lt;h3 id="bug-report-to-apple">Bug report to Apple&lt;/h3>
+&lt;p>I&amp;rsquo;ve submitted a &lt;em>Feedback&lt;/em> to Apple, &lt;code>FB16482480&lt;/code>. Feel free to submit similar ones and even refer to mine. Included were full logs and information around which time periods had the CCID-enabled key connected during sleep.&lt;/p>
+&lt;h2 id="workarounds">Workarounds&lt;/h2>
+&lt;p>There are a few workarounds:&lt;/p>
+&lt;ol>
+&lt;li>Disable CCID, making your key FIDO only, like the &lt;a href="https://www.yubico.com/products/security-key/">much cheaper model&lt;/a>&lt;/li>
+&lt;li>Unplug the key when the laptop is in sleep, completely defeating the purpose of the &amp;ldquo;nano&amp;rdquo; form factor.&lt;/li>
+&lt;li>Using hibernation to save battery while making your laptop worse.&lt;/li>
+&lt;li>Using software to &amp;ldquo;disconnect&amp;rdquo; the key.&lt;/li>
+&lt;/ol>
+&lt;h3 id="making-your-yubikey-worse">Making your YubiKey worse&lt;/h3>
+&lt;p>To see if CCID is enabled on your key, run
+&lt;code>ykman info&lt;/code>.&lt;/p>
+&lt;pre tabindex="0">&lt;code>Device type: YubiKey 5C NFC
+Serial number: XXXXXX
+Firmware version: 5.2.7
+Form factor: Keychain (USB-C)
+Enabled USB interfaces: FIDO, CCID
+NFC transport is enabled
+Applications USB NFC
+Yubico OTP Disabled Disabled
+FIDO U2F Enabled Enabled
+FIDO2 Enabled Enabled
+OATH Disabled Disabled
+PIV Disabled Disabled
+OpenPGP Enabled Disabled
+YubiHSM Auth Not available Not available
+&lt;/code>&lt;/pre>&lt;p>If you do not have &lt;code>ykman&lt;/code> (it&amp;rsquo;s in brew), you can run &lt;code>pmset -g assertions&lt;/code>.&lt;/p>
+&lt;pre tabindex="0">&lt;code>id=567 level=255 0x4=USB creat=2025-02-14, 10:07 description=com.apple.usb.externaldevice.02100000 owner=YubiKey FIDO+CCID
+&lt;/code>&lt;/pre>&lt;p>If CCID (and possibly OTP) are enabled, and you do not need them, disable them by disabling protocols on the USB interface until only FIDO2 and FIDO U2F are enabled.&lt;/p>
+&lt;p>This can be done with &lt;code>ykman&lt;/code>:&lt;/p>
+&lt;pre tabindex="0">&lt;code>ykman config usb --disable OpenPGP
+&lt;/code>&lt;/pre>&lt;p>Alternatively, &lt;a href="https://www.yubico.com/support/download/yubikey-manager/">YubiKey Manager&lt;/a> provides a GUI for this. Once you&amp;rsquo;re done, check if CCID is enabled again. It shouldn&amp;rsquo;t be.&lt;/p>
+&lt;h3 id="making-your-life-worse">Making your life worse&lt;/h3>
+&lt;p>Try to remember to unplug your nano key from the laptop before putting it in a bag the night before a trip!
+This is what I do, but considering I switch my keys from laptop to laptop so often, it&amp;rsquo;s not so bad.&lt;/p>
+&lt;p>This is more annoying for people who have a key dedicated to a &amp;ldquo;work laptop&amp;rdquo;, for example.&lt;/p>
+&lt;h3 id="making-your-laptop-worse">Making your laptop worse&lt;/h3>
+&lt;p>This was the workaround provided to me by Yubico, to make the laptop hibernate instead of sleep.&lt;/p>
+&lt;pre tabindex="0">&lt;code>sudo pmset -a hibernatemode 25
+sudo pmset -a standbydelay 15
+&lt;/code>&lt;/pre>&lt;h3 id="running-more-privileged-software">Running more privileged software&lt;/h3>
+&lt;p>I don&amp;rsquo;t love this option simply because I&amp;rsquo;d rather not run software when I can avoid it, especially when it requires such levels of access.&lt;/p>
+&lt;p>That being said, &lt;a href="https://github.com/pallotron/yubiswitch">Yubiswitch&lt;/a> looks like a very neat application for giving you the ability to automatically disable YubiKeys, enable them with keyboard shortcuts etc.&lt;/p>
+&lt;h3 id="untested-disable-bluetooth-wake-and-powernap">Untested: Disable Bluetooth Wake and PowerNap&lt;/h3>
+&lt;p>It is possible that disabling these features on macOS might improve the situation, based on the wakes seemingly being associated to Bluetooth. As someone constantly using laptops with external keyboards, this is a non-starter for me.&lt;/p>
+&lt;h2 id="whats-next">What&amp;rsquo;s next?&lt;/h2>
+&lt;p>Probably nothing. I&amp;rsquo;ll keep removing my keys overnight, and Apple will likely not acknowledge my report, but at least there&amp;rsquo;s now a page online with a bit more detail than the previously linked forum threads!&lt;/p>
+&lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
+async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>Magic/Tragic Email Links: Don't make them the only option</title><link>https://recyclebin.zip/posts/annoyinglinks/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/annoyinglinks/</guid><description>&lt;p>The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link">futuristic PDA&lt;/a>. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link">Auth0&lt;/a> use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p>
 &lt;p>Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/">404 Media&lt;/a>, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/">&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a> in defense of so-called magic links.&lt;/p>
 &lt;p>Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p></description><content>&lt;p>The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link">futuristic PDA&lt;/a>. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link">Auth0&lt;/a> use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p>
 &lt;p>Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/">404 Media&lt;/a>, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/">&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a> in defense of so-called magic links.&lt;/p>
 &lt;p>Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p>
 &lt;p>The article even covers some of my annoyances with this system, but throws out this sentence:&lt;/p>
 &lt;blockquote>
-&lt;p>&lt;a href="https://www.404media.co/we-dont-want-your-password-3/">We find this to be a much easier login process and wish it was more common across the web where appropriate.&lt;/a>&lt;/p>
-&lt;/blockquote>
+&lt;p>&lt;a href="https://www.404media.co/we-dont-want-your-password-3/">We find this to be a much easier login process and wish it was more common across the web where appropriate.&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;p>Easier than what? Easier than a long password, without a password manager? Easier than a passkey? Easier than an OTP sent to the same email address?&lt;/p>
 &lt;p>This sentence reads to me as one written by someone mostly working and &lt;em>living&lt;/em> from a single laptop and mobile device. The second part of the sentence, calling for more sites to do this is why I am writing this.&lt;/p>
 &lt;p>For any scenario with a minimal amount of complexity, like users with multiple computers, and you&amp;rsquo;re looking at a scenario where the site&amp;rsquo;s unwillingness to deal with other login methods shoves friction on the end-user.&lt;/p>
@@ -120,13 +282,11 @@ async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>Befor
 &lt;p>You’ve used October Cyber Security Awareness month as an excuse to improve cyber security.&lt;/p>
 &lt;p>Well done!&lt;/p></content></item><item><title>Managing Apple Intelligence via MDM</title><link>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</guid><description>&lt;p>This summer, since WWDC, I was repeatedly asked:&lt;/p>
 &lt;blockquote>
-&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>
-&lt;/blockquote>
+&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>&lt;/blockquote>
 &lt;p>Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
 The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p></description><content>&lt;p>This summer, since WWDC, I was repeatedly asked:&lt;/p>
 &lt;blockquote>
-&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>
-&lt;/blockquote>
+&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>&lt;/blockquote>
 &lt;p>Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
 The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p>
 &lt;p>Now, with the release of iOS 18 and macOS 15, we&amp;rsquo;ve got some of those settings to play with.
