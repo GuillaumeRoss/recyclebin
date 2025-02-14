@@ -1,5 +1,5 @@
 +++
-title = "MacBook YubiKey induced insomnia"
+title = "MacBook YubiKey Induced Insomnia"
 date = "2025-02-13"
 author = "Guillaume Ross"
 description = "Have you ever left a Yubikey in your USB port over the weekend to then leave on Monday with a dead MacBook in your bag?"
