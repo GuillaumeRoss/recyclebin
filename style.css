@@ -1,0 +1,12 @@
+/* Mermaid: lighter arrows for better visibility on dark terminal theme */
+.mermaid .edgePath .path,
+.mermaid .flowchart-link {
+  stroke: #b8b8b8 !important;
+  stroke-width: 1.75px !important;
+}
+
+.mermaid .marker,
+.mermaid marker path {
+  fill: #b8b8b8 !important;
+  stroke: #b8b8b8 !important;
+}

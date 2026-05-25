@@ -1,100 +1,241 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 13 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MacBook YubiKey Induced Insomnia</title><link>https://recyclebin.zip/posts/yubisleep/</link><pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/yubisleep/</guid><description>&lt;p>Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p>
-&lt;p>You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Post&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Date&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/">Reddit Discussion&lt;/a>&lt;/td>
-&lt;td>Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td>
-&lt;td>2021-01-03&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567">Mac Power Users Forum&lt;/a>&lt;/td>
-&lt;td>A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td>
-&lt;td>2022-09-05&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/">Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a>&lt;/td>
-&lt;td>Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td>
-&lt;td>2021-01-03&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p></description><content>&lt;p>Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p>
-&lt;p>You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Post&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Date&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/">Reddit Discussion&lt;/a>&lt;/td>
-&lt;td>Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td>
-&lt;td>2021-01-03&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567">Mac Power Users Forum&lt;/a>&lt;/td>
-&lt;td>A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td>
-&lt;td>2022-09-05&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/">Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a>&lt;/td>
-&lt;td>Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td>
-&lt;td>2021-01-03&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p>
-&lt;h2 id="cause">Cause&lt;/h2>
-&lt;p>After testing, on a 16-inch MacBook Pro with M1 Pro with a battery that&amp;rsquo;s in great condition, and noticing the issue on other MacBooks (Intel and Apple Silicon), I decided to do a bit of research.&lt;/p>
-&lt;p>At first, I thought it could be related to &lt;a href="https://en.wikipedia.org/wiki/Endpoint_detection_and_response">EDR&lt;/a> or &lt;a href="https://en.wikipedia.org/wiki/Data_loss_prevention_software">DLP&lt;/a> software.&lt;/p>
-&lt;p>To rule that out, these tests were done on a Mac with a fresh install done on 15.0, now running 15.3 without any &lt;del>rootkits&lt;/del> highly privileged closed source endpoint security tools.&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Time Period&lt;/th>
-&lt;th>Condition&lt;/th>
-&lt;th>Battery Percentage Lost&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>~12 hours&lt;/td>
-&lt;td>No YubiKey&lt;/td>
-&lt;td>0%&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>15 hours&lt;/td>
-&lt;td>YubiKey with FIDO and CCID enabled&lt;/td>
-&lt;td>25%&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>48 hours&lt;/td>
-&lt;td>YubiKey with FIDO enabled&lt;/td>
-&lt;td>10%&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>These tests weren&amp;rsquo;t very scientific, but enough to guess that:&lt;/p>
-&lt;ol>
-&lt;li>The issue is not the key using the power, as I can&amp;rsquo;t really see how such a small device would use 25% of a laptop&amp;rsquo;s battery without even getting warm, so it must be sleep related.&lt;/li>
-&lt;li>&lt;a href="https://en.wikipedia.org/wiki/CCID_%28protocol%29">CCID&lt;/a> was making things significantly worse. It was enabled as I use &lt;a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP">OpenPGP&lt;/a> on my keys, usually to sign git commits.&lt;/li>
-&lt;/ol>
-&lt;p>To avoid &lt;a href="https://www.micahwalter.com/2021/03/yubisneezes/">Yubisneezes&lt;/a>, I had already disabled OTP, which for some weird reason is somehow stil enabled by default on YubiKeys.&lt;/p>
-&lt;p>A quick look through sleep logs/pmset output showed a variety of events happening roughly every &lt;strong>12 seconds!&lt;/strong>, with the laptop sometimes awake for up to 6 seconds.&lt;/p>
-&lt;p>&lt;code>2025-02-07 07:00:21.975301-0500 0x2cb806 Default 0x0 2351 0 PowerChime: 237653.924112: GOING TO SLEEP: kStateDarkWake -&amp;gt; kStateAsleep &lt;/code>&lt;/p>
-&lt;p>Here are 7 seconds of &lt;code>pmset&lt;/code> logs:&lt;/p>
-&lt;pre tabindex="0">&lt;code>2025-02-07 07:00:00 -0500 WakeTime WakeTime: 0.329 sec
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Recyclebin.zip</title><link>https://recyclebin.zip/posts/</link><description>Recent content in Posts on Recyclebin.zip</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 25 May 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://recyclebin.zip/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Detecting and removing dangerous secrets on dev workstations before Shai-Hulud does</title><link>https://recyclebin.zip/posts/2026-05-25-secret-scanning-fleet-bagel/</link><pubDate>Mon, 25 May 2026 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2026-05-25-secret-scanning-fleet-bagel/</guid><description>&lt;h2 id="credential-theft-from-developer-workstations"&gt;Credential theft from developer workstations&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Let&amp;rsquo;s use a combination of open-source tools to detect problematic clear-text secrets on workstations and to ensure they&amp;rsquo;re not so easy for malware/scripts to steal.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PyPI, npm, VS Code Extensions, OpenVSX, brew and other package managers expand the attack surface on workstations. While companies still lie to themselves that &amp;ldquo;all code changes are reviewed&amp;rdquo;, millions of developers have code execution access to workstations, and those developers can get compromised by various threat actors. Now that non-technical users run agents which pull the same packages, the issue is spreading to every workstation.&lt;/p&gt;</description><content>&lt;h2 id="credential-theft-from-developer-workstations"&gt;Credential theft from developer workstations&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Let&amp;rsquo;s use a combination of open-source tools to detect problematic clear-text secrets on workstations and to ensure they&amp;rsquo;re not so easy for malware/scripts to steal.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;PyPI, npm, VS Code Extensions, OpenVSX, brew and other package managers expand the attack surface on workstations. While companies still lie to themselves that &amp;ldquo;all code changes are reviewed&amp;rdquo;, millions of developers have code execution access to workstations, and those developers can get compromised by various threat actors. Now that non-technical users run agents which pull the same packages, the issue is spreading to every workstation.&lt;/p&gt;
+&lt;p&gt;There are many controls we can apply to workstations, but it can be difficult to do so, especially for smaller organizations.&lt;/p&gt;
+&lt;p&gt;So what do most companies do? It varies but typically goes from &lt;em&gt;nothing&lt;/em&gt; to &lt;em&gt;hope our endpoint security tools block this&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id="how-can-we-make-this-better-with-open-source-tools"&gt;How can we make this better with open-source tools?&lt;/h2&gt;
+&lt;p&gt;The solution is straightforward, but requires a few tools:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A tool to find secrets and output results. &lt;code&gt;bagel&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;A tool to check results for compliance. &lt;code&gt;fleet + osquery&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Integration to tools like Slack and Identity Providers. &lt;code&gt;fleet&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The high-level workflow looks like this:&lt;/p&gt;
+&lt;pre class="mermaid"&gt;flowchart TD
+A[bagel scans workstation&lt;br/&gt;on schedule via LaunchAgent] --&gt; B[Scan results written as JSON]
+B --&gt; C[Fleet reads results&lt;br/&gt;via osquery + parse_json]
+C --&gt; D{Policy check:&lt;br/&gt;any critical findings?}
+D --&gt;|No| E[Workstation passes policy]
+D --&gt;|Yes| F[Workstation fails policy]
+F --&gt; G[Slack notification&lt;br/&gt;sent to developer]
+F --&gt; H[IdP queries Fleet policy on SSO attempt]
+H -- Entra Conditional Access Check --&gt; I[SSO blocked until remediated]
+&lt;/pre&gt;
+&lt;h3 id="bagel"&gt;Bagel&lt;/h3&gt;
+&lt;p&gt;An open-source tool by Boost Security, &lt;a href="https://github.com/boostsecurityio/bagel"&gt;bagel&lt;/a&gt; scans a user&amp;rsquo;s home directory for secrets commonly used by developers. It is configurable, with probes for SSH keys, GitHub credentials, cloud provider credentials, and more. It outputs JSON, and includes the severity and location of each finding, but of course does not log the actual secrets. Bagel, written in Go, is fast and focused, looking for secrets in the same places where malware usually does. Think of it as an analogue of &lt;code&gt;trufflehog&lt;/code&gt;, but for workstations instead of repos.&lt;/p&gt;
+&lt;p&gt;As it is a command-line tool, it can easily be scheduled with a LaunchAgent, and as its output is JSON, it is easy to integrate with other tools to build a solution instead of just telling developers to &amp;ldquo;run &lt;code&gt;bagel&lt;/code&gt; and clean up&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id="fleet"&gt;Fleet&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/fleetdm/fleet"&gt;Fleet&lt;/a&gt; is an open-source platform for IT and security, which uses &lt;a href="https://osquery.io"&gt;osquery&lt;/a&gt; for telemetry. Think of it as an MDM (mobile device management) and osquery server, managed via GitOps (recommended).&lt;/p&gt;
+&lt;p&gt;Fleet provides the following features that are critical to making our secret scanning more robust than a simple ad-hoc effort:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Package deployment.&lt;/li&gt;
+&lt;li&gt;Policy queries, or &amp;ldquo;checks&amp;rdquo;. These queries are considered to pass if results are returned, and to fail if there are none.&lt;/li&gt;
+&lt;li&gt;A Fleet-specific osquery table for &lt;a href="https://fleetdm.com/tables/parse_json"&gt;parsing JSON&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;An API to integrate third-party tools like IdPs to check on compliance status, as well as webhook notifications to integrate to orchestration tools like &lt;a href="https://n8n.io"&gt;n8n&lt;/a&gt;, SIEM, etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="fleebag"&gt;Fleebag&lt;/h3&gt;
+&lt;p&gt;As a proof of concept, I figured it would be relatively easy to hook these up together.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/GuillaumeRoss/fleebag"&gt;Fleebag&lt;/a&gt; (for &lt;em&gt;fleet-bagel&lt;/em&gt; as I am an expert at naming things) is a simple vibe-coded repository containing the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/GuillaumeRoss/fleebag/blob/main/scripts/build-pkg.sh"&gt;Scripts&lt;/a&gt; to create a macOS installation package of &lt;code&gt;bagel&lt;/code&gt;, with a LaunchAgent running it on a schedule, outputting logs to a standard destination.&lt;/li&gt;
+&lt;li&gt;A Fleet &lt;a href="https://github.com/GuillaumeRoss/fleebag/blob/main/queries/bagel_findings.sql"&gt;query&lt;/a&gt; for all secrets that &lt;code&gt;bagel&lt;/code&gt; found on each workstation.&lt;/li&gt;
+&lt;li&gt;A Fleet &lt;a href="https://github.com/GuillaumeRoss/fleebag/blob/main/queries/bagel_policy.sql"&gt;policy query&lt;/a&gt; that passes if &lt;code&gt;fleebag&lt;/code&gt; results are fresh and contain no critical findings, which you can tune to your desired severity.&lt;/li&gt;
+&lt;li&gt;An example macOS profile to grant &lt;code&gt;bagel&lt;/code&gt; full disk access, so you don&amp;rsquo;t have to rely on end users approving security prompts on macOS.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="example-query"&gt;Example query&lt;/h4&gt;
+&lt;p&gt;This query is for macOS, as is the rest of &lt;code&gt;fleebag&lt;/code&gt;, though with &lt;code&gt;bagel&lt;/code&gt; and &lt;code&gt;fleet&lt;/code&gt; this can easily be adjusted to other platforms by tweaking paths and swapping &lt;code&gt;LaunchAgent&lt;/code&gt; files with cron jobs or scheduled tasks.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;WITH&lt;/span&gt; findings_base &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;-- One group per finding element: parent is exactly &amp;#39;findings/N&amp;#39;.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;-- NOT LIKE &amp;#39;findings/%/%&amp;#39; excludes findings/N/metadata, findings/N/locations, etc.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;-- Without this guard those sub-groups produce NULL-filled rows with only a timestamp.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pj.path,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pj.parent,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;severity&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; severity,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;id&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; rule_id,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;probe&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; probe,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;path&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; file_path,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;fingerprint&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; fingerprint,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;title&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; title
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; parse_json pj
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHERE&lt;/span&gt; pj.path &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/Users/%/Library/Logs/fleebag/results.json&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; pj.parent &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;findings/%&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; pj.parent &lt;span style="color:#66d9ef"&gt;NOT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;findings/%/%&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;GROUP&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt; pj.path, pj.parent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;finding_metadata &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;-- line_number lives at findings[N].metadata.line_number, not findings[N].line
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pj.path,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; SUBSTR(pj.parent, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;LENGTH&lt;/span&gt;(pj.parent) &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;LENGTH&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;/metadata&amp;#39;&lt;/span&gt;)) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; parent,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;MAX&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; pj.&lt;span style="color:#66d9ef"&gt;key&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;line_number&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; pj.value &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; line_number
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; parse_json pj
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHERE&lt;/span&gt; pj.path &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/Users/%/Library/Logs/fleebag/results.json&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; pj.parent &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;findings/%/metadata&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;GROUP&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt; pj.path, pj.parent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;finding_locations &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#75715e"&gt;-- locations[] is optional; present when the same secret appears in multiple places
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; pj.path,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; SUBSTR(pj.parent, &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;, &lt;span style="color:#66d9ef"&gt;LENGTH&lt;/span&gt;(pj.parent) &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;LENGTH&lt;/span&gt;(&lt;span style="color:#e6db74"&gt;&amp;#39;/locations&amp;#39;&lt;/span&gt;)) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; parent,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; GROUP_CONCAT(pj.value, &lt;span style="color:#e6db74"&gt;&amp;#39;, &amp;#39;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; locations
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; parse_json pj
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHERE&lt;/span&gt; pj.path &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;/Users/%/Library/Logs/fleebag/results.json&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; pj.parent &lt;span style="color:#66d9ef"&gt;LIKE&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;findings/%/locations&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;GROUP&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt; pj.path, pj.parent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;SELECT&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;REPLACE&lt;/span&gt;(&lt;span style="color:#66d9ef"&gt;REPLACE&lt;/span&gt;(fb.path, &lt;span style="color:#e6db74"&gt;&amp;#39;/Library/Logs/fleebag/results.json&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;&amp;#39;&lt;/span&gt;), &lt;span style="color:#e6db74"&gt;&amp;#39;/Users/&amp;#39;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#39;&amp;#39;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; username,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.severity,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.rule_id,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.probe,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.file_path,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; m.line_number,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; l.locations,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.title,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.fingerprint,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; datetime(f.mtime, &lt;span style="color:#e6db74"&gt;&amp;#39;unixepoch&amp;#39;&lt;/span&gt;) &lt;span style="color:#66d9ef"&gt;AS&lt;/span&gt; last_scan
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;FROM&lt;/span&gt; findings_base fb
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;LEFT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;JOIN&lt;/span&gt; finding_metadata m &lt;span style="color:#66d9ef"&gt;ON&lt;/span&gt; m.path &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fb.path &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; m.parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fb.parent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;LEFT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;JOIN&lt;/span&gt; finding_locations l &lt;span style="color:#66d9ef"&gt;ON&lt;/span&gt; l.path &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fb.path &lt;span style="color:#66d9ef"&gt;AND&lt;/span&gt; l.parent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fb.parent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;LEFT&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;JOIN&lt;/span&gt; file f &lt;span style="color:#66d9ef"&gt;ON&lt;/span&gt; f.path &lt;span style="color:#f92672"&gt;=&lt;/span&gt; fb.path
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;ORDER&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;BY&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;CASE&lt;/span&gt; fb.severity
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;critical&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;high&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;medium&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;WHEN&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#39;low&amp;#39;&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;THEN&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;4&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;ELSE&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;END&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fb.path;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="policy-query"&gt;Policy query&lt;/h4&gt;
+&lt;p&gt;The &lt;a href="https://github.com/GuillaumeRoss/fleebag/blob/main/queries/bagel_policy.sql"&gt;policy query&lt;/a&gt; is essentially a modified version of the previous query, that will return &lt;code&gt;1&lt;/code&gt; if the file is fresh and does NOT contain critical findings. Adjust it to your tolerance by changing &lt;code&gt;critical&lt;/code&gt; to &lt;code&gt;high&lt;/code&gt;, for example.&lt;/p&gt;
+&lt;h2 id="what-is-missing"&gt;What is missing&lt;/h2&gt;
+&lt;ol start="0"&gt;
+&lt;li&gt;This is hastily put together just as a proof of concept, to allow sharing of this idea. &lt;code&gt;bagel&lt;/code&gt;, &lt;code&gt;fleet&lt;/code&gt; and &lt;code&gt;osquery&lt;/code&gt; are serious projects. This &lt;em&gt;glue&lt;/em&gt; repo is not.&lt;/li&gt;
+&lt;li&gt;Lack of signatures and notarization.
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;bagel&lt;/code&gt; itself is ad-hoc signed. Before deploying any of this at scale, I would recommend reviewing it and signing your own build.&lt;/li&gt;
+&lt;li&gt;You should do the same for the &lt;code&gt;.pkg&lt;/code&gt; you generate for MDM distribution.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;The MDM profile for full-disk access is essentially a placeholder, you likely have existing similar profiles for security tooling, and should add the right identity for your signed version of &lt;code&gt;bagel&lt;/code&gt; to those.&lt;/li&gt;
+&lt;li&gt;Unlike a &lt;a href="https://boostsecurity.io/solution/developer-endpoint"&gt;fully packaged solution&lt;/a&gt;, this only scans for secrets. It has no concept of what packages are installed, or if those secrets could already have been exposed.&lt;/li&gt;
+&lt;li&gt;You&amp;rsquo;ll need to hook the Fleet policy up to your IdP. For example, if you use Entra, you can leverage &lt;a href="https://fleetdm.com/guides/entra-conditional-access-integration"&gt;Conditional Access&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;An alternate place where to store secrets. There are many options for this, from tools like &lt;a href="https://1password.com/developer-security"&gt;1Password developer tools&lt;/a&gt; to &lt;a href="https://github.com/drduh/yubikey-guide"&gt;Yubikeys for SSH and GPG&lt;/a&gt; depending on your risk tolerance.&lt;/li&gt;
+&lt;li&gt;Some tools make it extremely hard not to have secrets in readable files. Security tools like &lt;a href="https://phorion.io/blog/detecting-and-preventing-npm-supply-chain-attacks-with-phorion-protections/"&gt;Phorion&lt;/a&gt; and &lt;a href="https://northpole.security/features/file-access-authorization.html"&gt;Northpole Security&amp;rsquo;s Santa&lt;/a&gt; that can authorize only legit applications to access these files are extremely useful.&lt;/li&gt;
+&lt;li&gt;Nothing here actually removes the secrets, it can be used to tell the developer to remove them and to block their workstations from logging in as an incentive. You could be more aggressive and clean-up the secrets with a script as well, but be careful with anything that destroys data.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="lets-do-this"&gt;Let&amp;rsquo;s do this&lt;/h2&gt;
+&lt;p&gt;We can all secure our own environments more and reduce the impact these industry-wide attacks are currently having.&lt;/p&gt;
+&lt;p&gt;We have been lucky the impact has been limited so far. The true reach of these attacks is potentially catastrophic, and as more attackers become familiar with these methods, damaging attacks will keep happening.&lt;/p&gt;
+&lt;p&gt;On top of securing build pipelines, applications and their dependencies, we need to realize that endpoint security is still important. The so-called basics and fundamentals change. While we have known for a while that keeping clear-text secrets on disk was a bad idea, it was not until the widespread infostealer epidemic that it became an absolute must. Due to the way these attacks spread, even if only some of us who have write access to popular open-source projects start securing developer workstations better, we can have a significant impact.&lt;/p&gt;
+&lt;p&gt;Stop waiting for your EPP/EDR to save you, and put your MDM, scripts and IdPs to good use!&lt;/p&gt;
+&lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
+async src="//gc.zgo.at/count.js"&gt;&lt;/script&gt;</content></item><item><title>MacBook YubiKey Induced Insomnia</title><link>https://recyclebin.zip/posts/yubisleep/</link><pubDate>Thu, 13 Feb 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/yubisleep/</guid><description>&lt;p&gt;Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Post&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Date&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/"&gt;Reddit Discussion&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td&gt;
+&lt;td&gt;2021-01-03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567"&gt;Mac Power Users Forum&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td&gt;
+&lt;td&gt;2022-09-05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/"&gt;Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td&gt;
+&lt;td&gt;2021-01-03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p&gt;</description><content>&lt;p&gt;Nothing beats realizing your MacBook is out of battery on a Monday morning at the airport when you take it out of the bag. Free adrenaline!&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;re not alone, this is widely reported by Mac users.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Post&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Date&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://www.reddit.com/r/yubikey/comments/lyyrj0/yubikey_nano_5c_drains_mac_book_battery/"&gt;Reddit Discussion&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Users report that the YubiKey Nano 5C can cause significant overnight battery drain on MacBooks.&lt;/td&gt;
+&lt;td&gt;2021-01-03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://talk.macpowerusers.com/t/yubico-nano-key-reducing-macbook-pro-power-backup-time/30567"&gt;Mac Power Users Forum&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;A thread discusses how YubiKeys may prevent MacBooks from sleeping properly, leading to battery drain.&lt;/td&gt;
+&lt;td&gt;2022-09-05&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href="https://www.reddit.com/r/yubikey/comments/kpfag9/yubikey_5c_nfc_idle_battery_drain_on_macbook_air/"&gt;Reddit: YubiKey 5C NFC Idle Battery Drain&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Discussion about idle battery drain on MacBook Air when a YubiKey 5C NFC is plugged in.&lt;/td&gt;
+&lt;td&gt;2021-01-03&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;As this issue is often referenced but few details are provided, I decided to post my research mostly to help people searching the web for this issue.&lt;/p&gt;
+&lt;h2 id="cause"&gt;Cause&lt;/h2&gt;
+&lt;p&gt;After testing, on a 16-inch MacBook Pro with M1 Pro with a battery that&amp;rsquo;s in great condition, and noticing the issue on other MacBooks (Intel and Apple Silicon), I decided to do a bit of research.&lt;/p&gt;
+&lt;p&gt;At first, I thought it could be related to &lt;a href="https://en.wikipedia.org/wiki/Endpoint_detection_and_response"&gt;EDR&lt;/a&gt; or &lt;a href="https://en.wikipedia.org/wiki/Data_loss_prevention_software"&gt;DLP&lt;/a&gt; software.&lt;/p&gt;
+&lt;p&gt;To rule that out, these tests were done on a Mac with a fresh install done on 15.0, now running 15.3 without any &lt;del&gt;rootkits&lt;/del&gt; highly privileged closed source endpoint security tools.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Time Period&lt;/th&gt;
+&lt;th&gt;Condition&lt;/th&gt;
+&lt;th&gt;Battery Percentage Lost&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;~12 hours&lt;/td&gt;
+&lt;td&gt;No YubiKey&lt;/td&gt;
+&lt;td&gt;0%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;15 hours&lt;/td&gt;
+&lt;td&gt;YubiKey with FIDO and CCID enabled&lt;/td&gt;
+&lt;td&gt;25%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;48 hours&lt;/td&gt;
+&lt;td&gt;YubiKey with FIDO enabled&lt;/td&gt;
+&lt;td&gt;10%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;These tests weren&amp;rsquo;t very scientific, but enough to guess that:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The issue is not the key using the power, as I can&amp;rsquo;t really see how such a small device would use 25% of a laptop&amp;rsquo;s battery without even getting warm, so it must be sleep related.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/CCID_%28protocol%29"&gt;CCID&lt;/a&gt; was making things significantly worse. It was enabled as I use &lt;a href="https://support.yubico.com/hc/en-us/articles/360013790259-Using-Your-YubiKey-with-OpenPGP"&gt;OpenPGP&lt;/a&gt; on my keys, usually to sign git commits.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;To avoid &lt;a href="https://www.micahwalter.com/2021/03/yubisneezes/"&gt;Yubisneezes&lt;/a&gt;, I had already disabled OTP, which for some weird reason is somehow stil enabled by default on YubiKeys.&lt;/p&gt;
+&lt;p&gt;A quick look through sleep logs/pmset output showed a variety of events happening roughly every &lt;strong&gt;12 seconds!&lt;/strong&gt;, with the laptop sometimes awake for up to 6 seconds.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;2025-02-07 07:00:21.975301-0500 0x2cb806 Default 0x0 2351 0 PowerChime: 237653.924112: GOING TO SLEEP: kStateDarkWake -&amp;gt; kStateAsleep &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Here are 7 seconds of &lt;code&gt;pmset&lt;/code&gt; logs:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;2025-02-07 07:00:00 -0500 WakeTime WakeTime: 0.329 sec
 2025-02-07 07:00:00 -0500 Kernel Client Acks Delays to Wake notifications: [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(101 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(134 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [Codec Output driver is slow(msg: DidChangeState to 1)(79 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(132 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(136 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(276 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [AppleCS42L84Audio driver is slow(msg: DidChangeState to 1)(77 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(131 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(272 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(134 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(274 ms)] [Port-USB-C driver is slow(msg: SetState to 1)(51 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(132 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(135 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(140 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(275 ms)] [Codec Output driver is slow(msg: SetState to 1)(77 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(103 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(134 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(139 ms)] [usb-drd2-port-ss driver is slow(msg: DidChangeState to 3)(274 ms)] [AppleCS42L84Audio driver is slow(msg: DidChangeState to 1)(75 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(75 ms)] [RTBuddy(GFX) driver is slow(msg: SetState to 2)(102 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(135 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(133 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(136 ms)]
 2025-02-07 07:00:00 -0500 Assertions PID 445(mDNSResponder) Released MaintenanceWake &amp;#34;mDNSResponder:maintenance&amp;#34; 00:00:00 id:0x0xd000081bd [System: PrevIdle PushSrvc SRPrevSleep kCPU]
 2025-02-07 07:00:02 -0500 com.apple.sleepservices.sessionTerminated SleepService: window has terminated.
@@ -108,24 +249,25 @@
 2025-02-07 07:00:07 -0500 DarkWake DarkWake from Deep Idle [CDNP] : due to SMC.OutboxNotEmpty smc.70070000 wifibt/ Using BATT (Charge:76%) 7 secs
 2025-02-07 07:00:07 -0500 WakeDetails DriverReason:SMC.OutboxNotEmpty - DriverDetails:
 2025-02-07 07:00:07 -0500 WakeTime WakeTime: 0.343 sec
-&lt;/code>&lt;/pre>&lt;h3 id="yubico-response">Yubico response&lt;/h3>
-&lt;blockquote>
-&lt;p>We have investigated this and have given our results to Apple. The issue is how Apple deals with smart cards. FIDO/PIV/PGP use the CCID interface that uses the smart card service. Apple architecture causes the smart card service to be put to sleep and once a heartbeat goes to the usb device to check, it will then have to reactivate, for smart cards such as PIV and PGP this happens more often than FIDO standard. This however, is all in MacOS software and not related to the YubiKey. There is not a way for us to change our firmware and still function within the standard. Apple has this information but has not provided us with a timeline nor any change or expected solution.&lt;/p>&lt;/blockquote>
-&lt;p>This issue would therefore also occur with other types of smartcard readers on macOS, but they&amp;rsquo;re rare, especially in form factors someone would leave connected to a laptop.&lt;/p>
-&lt;h3 id="bug-report-to-apple">Bug report to Apple&lt;/h3>
-&lt;p>I&amp;rsquo;ve submitted a &lt;em>Feedback&lt;/em> to Apple, &lt;code>FB16482480&lt;/code>. Feel free to submit similar ones and even refer to mine. Included were full logs and information around which time periods had the CCID-enabled key connected during sleep.&lt;/p>
-&lt;h2 id="workarounds">Workarounds&lt;/h2>
-&lt;p>There are a few workarounds:&lt;/p>
-&lt;ol>
-&lt;li>Disable CCID, making your key FIDO only, like the &lt;a href="https://www.yubico.com/products/security-key/">much cheaper model&lt;/a>&lt;/li>
-&lt;li>Unplug the key when the laptop is in sleep, completely defeating the purpose of the &amp;ldquo;nano&amp;rdquo; form factor.&lt;/li>
-&lt;li>Using hibernation to save battery while making your laptop worse.&lt;/li>
-&lt;li>Using software to &amp;ldquo;disconnect&amp;rdquo; the key.&lt;/li>
-&lt;/ol>
-&lt;h3 id="making-your-yubikey-worse">Making your YubiKey worse&lt;/h3>
-&lt;p>To see if CCID is enabled on your key, run
-&lt;code>ykman info&lt;/code>.&lt;/p>
-&lt;pre tabindex="0">&lt;code>Device type: YubiKey 5C NFC
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="yubico-response"&gt;Yubico response&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have investigated this and have given our results to Apple. The issue is how Apple deals with smart cards. FIDO/PIV/PGP use the CCID interface that uses the smart card service. Apple architecture causes the smart card service to be put to sleep and once a heartbeat goes to the usb device to check, it will then have to reactivate, for smart cards such as PIV and PGP this happens more often than FIDO standard. This however, is all in MacOS software and not related to the YubiKey. There is not a way for us to change our firmware and still function within the standard. Apple has this information but has not provided us with a timeline nor any change or expected solution.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This issue would therefore also occur with other types of smartcard readers on macOS, but they&amp;rsquo;re rare, especially in form factors someone would leave connected to a laptop.&lt;/p&gt;
+&lt;h3 id="bug-report-to-apple"&gt;Bug report to Apple&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;ve submitted a &lt;em&gt;Feedback&lt;/em&gt; to Apple, &lt;code&gt;FB16482480&lt;/code&gt;. Feel free to submit similar ones and even refer to mine. Included were full logs and information around which time periods had the CCID-enabled key connected during sleep.&lt;/p&gt;
+&lt;h2 id="workarounds"&gt;Workarounds&lt;/h2&gt;
+&lt;p&gt;There are a few workarounds:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Disable CCID, making your key FIDO only, like the &lt;a href="https://www.yubico.com/products/security-key/"&gt;much cheaper model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Unplug the key when the laptop is in sleep, completely defeating the purpose of the &amp;ldquo;nano&amp;rdquo; form factor.&lt;/li&gt;
+&lt;li&gt;Using hibernation to save battery while making your laptop worse.&lt;/li&gt;
+&lt;li&gt;Using software to &amp;ldquo;disconnect&amp;rdquo; the key.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="making-your-yubikey-worse"&gt;Making your YubiKey worse&lt;/h3&gt;
+&lt;p&gt;To see if CCID is enabled on your key, run
+&lt;code&gt;ykman info&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;Device type: YubiKey 5C NFC
 Serial number: XXXXXX
 Firmware version: 5.2.7
 Form factor: Keychain (USB-C)
@@ -139,266 +281,269 @@ OATH Disabled Disabled
 PIV Disabled Disabled
 OpenPGP Enabled Disabled
 YubiHSM Auth Not available Not available
-&lt;/code>&lt;/pre>&lt;p>If you do not have &lt;code>ykman&lt;/code> (it&amp;rsquo;s in brew), you can run &lt;code>pmset -g assertions&lt;/code>.&lt;/p>
-&lt;pre tabindex="0">&lt;code>id=567 level=255 0x4=USB creat=2025-02-14, 10:07 description=com.apple.usb.externaldevice.02100000 owner=YubiKey FIDO+CCID
-&lt;/code>&lt;/pre>&lt;p>If CCID (and possibly OTP) are enabled, and you do not need them, disable them by disabling protocols on the USB interface until only FIDO2 and FIDO U2F are enabled.&lt;/p>
-&lt;p>This can be done with &lt;code>ykman&lt;/code>:&lt;/p>
-&lt;pre tabindex="0">&lt;code>ykman config usb --disable OpenPGP
-&lt;/code>&lt;/pre>&lt;p>Alternatively, &lt;a href="https://www.yubico.com/support/download/yubikey-manager/">YubiKey Manager&lt;/a> provides a GUI for this. Once you&amp;rsquo;re done, check if CCID is enabled again. It shouldn&amp;rsquo;t be.&lt;/p>
-&lt;h3 id="making-your-life-worse">Making your life worse&lt;/h3>
-&lt;p>Try to remember to unplug your nano key from the laptop before putting it in a bag the night before a trip!
-This is what I do, but considering I switch my keys from laptop to laptop so often, it&amp;rsquo;s not so bad.&lt;/p>
-&lt;p>This is more annoying for people who have a key dedicated to a &amp;ldquo;work laptop&amp;rdquo;, for example.&lt;/p>
-&lt;h3 id="making-your-laptop-worse">Making your laptop worse&lt;/h3>
-&lt;p>This was the workaround provided to me by Yubico, to make the laptop hibernate instead of sleep.&lt;/p>
-&lt;pre tabindex="0">&lt;code>sudo pmset -a hibernatemode 25
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you do not have &lt;code&gt;ykman&lt;/code&gt; (it&amp;rsquo;s in brew), you can run &lt;code&gt;pmset -g assertions&lt;/code&gt;.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;id=567 level=255 0x4=USB creat=2025-02-14, 10:07 description=com.apple.usb.externaldevice.02100000 owner=YubiKey FIDO+CCID
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If CCID (and possibly OTP) are enabled, and you do not need them, disable them by disabling protocols on the USB interface until only FIDO2 and FIDO U2F are enabled.&lt;/p&gt;
+&lt;p&gt;This can be done with &lt;code&gt;ykman&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;ykman config usb --disable OpenPGP
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Alternatively, &lt;a href="https://www.yubico.com/support/download/yubikey-manager/"&gt;YubiKey Manager&lt;/a&gt; provides a GUI for this. Once you&amp;rsquo;re done, check if CCID is enabled again. It shouldn&amp;rsquo;t be.&lt;/p&gt;
+&lt;h3 id="making-your-life-worse"&gt;Making your life worse&lt;/h3&gt;
+&lt;p&gt;Try to remember to unplug your nano key from the laptop before putting it in a bag the night before a trip!
+This is what I do, but considering I switch my keys from laptop to laptop so often, it&amp;rsquo;s not so bad.&lt;/p&gt;
+&lt;p&gt;This is more annoying for people who have a key dedicated to a &amp;ldquo;work laptop&amp;rdquo;, for example.&lt;/p&gt;
+&lt;h3 id="making-your-laptop-worse"&gt;Making your laptop worse&lt;/h3&gt;
+&lt;p&gt;This was the workaround provided to me by Yubico, to make the laptop hibernate instead of sleep.&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;sudo pmset -a hibernatemode 25
 sudo pmset -a standbydelay 15
-&lt;/code>&lt;/pre>&lt;h3 id="running-more-privileged-software">Running more privileged software&lt;/h3>
-&lt;p>I don&amp;rsquo;t love this option simply because I&amp;rsquo;d rather not run software when I can avoid it, especially when it requires such levels of access.&lt;/p>
-&lt;p>That being said, &lt;a href="https://github.com/pallotron/yubiswitch">Yubiswitch&lt;/a> looks like a very neat application for giving you the ability to automatically disable YubiKeys, enable them with keyboard shortcuts etc.&lt;/p>
-&lt;h3 id="untested-disable-bluetooth-wake-and-powernap">Untested: Disable Bluetooth Wake and PowerNap&lt;/h3>
-&lt;p>It is possible that disabling these features on macOS might improve the situation, based on the wakes seemingly being associated to Bluetooth. As someone constantly using laptops with external keyboards, this is a non-starter for me.&lt;/p>
-&lt;h2 id="whats-next">What&amp;rsquo;s next?&lt;/h2>
-&lt;p>Probably nothing. I&amp;rsquo;ll keep removing my keys overnight, and Apple will likely not acknowledge my report, but at least there&amp;rsquo;s now a page online with a bit more detail than the previously linked forum threads!&lt;/p>
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id="running-more-privileged-software"&gt;Running more privileged software&lt;/h3&gt;
+&lt;p&gt;I don&amp;rsquo;t love this option simply because I&amp;rsquo;d rather not run software when I can avoid it, especially when it requires such levels of access.&lt;/p&gt;
+&lt;p&gt;That being said, &lt;a href="https://github.com/pallotron/yubiswitch"&gt;Yubiswitch&lt;/a&gt; looks like a very neat application for giving you the ability to automatically disable YubiKeys, enable them with keyboard shortcuts etc.&lt;/p&gt;
+&lt;h3 id="untested-disable-bluetooth-wake-and-powernap"&gt;Untested: Disable Bluetooth Wake and PowerNap&lt;/h3&gt;
+&lt;p&gt;It is possible that disabling these features on macOS might improve the situation, based on the wakes seemingly being associated to Bluetooth. As someone constantly using laptops with external keyboards, this is a non-starter for me.&lt;/p&gt;
+&lt;h2 id="whats-next"&gt;What&amp;rsquo;s next?&lt;/h2&gt;
+&lt;p&gt;Probably nothing. I&amp;rsquo;ll keep removing my keys overnight, and Apple will likely not acknowledge my report, but at least there&amp;rsquo;s now a page online with a bit more detail than the previously linked forum threads!&lt;/p&gt;
 &lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
-async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>Magic/Tragic Email Links: Don't make them the only option</title><link>https://recyclebin.zip/posts/annoyinglinks/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/annoyinglinks/</guid><description>&lt;p>The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link">futuristic PDA&lt;/a>. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link">Auth0&lt;/a> use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p>
-&lt;p>Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/">404 Media&lt;/a>, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/">&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a> in defense of so-called magic links.&lt;/p>
-&lt;p>Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p></description><content>&lt;p>The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link">futuristic PDA&lt;/a>. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link">Auth0&lt;/a> use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p>
-&lt;p>Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/">404 Media&lt;/a>, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/">&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a> in defense of so-called magic links.&lt;/p>
-&lt;p>Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p>
-&lt;p>The article even covers some of my annoyances with this system, but throws out this sentence:&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;a href="https://www.404media.co/we-dont-want-your-password-3/">We find this to be a much easier login process and wish it was more common across the web where appropriate.&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>Easier than what? Easier than a long password, without a password manager? Easier than a passkey? Easier than an OTP sent to the same email address?&lt;/p>
-&lt;p>This sentence reads to me as one written by someone mostly working and &lt;em>living&lt;/em> from a single laptop and mobile device. The second part of the sentence, calling for more sites to do this is why I am writing this.&lt;/p>
-&lt;p>For any scenario with a minimal amount of complexity, like users with multiple computers, and you&amp;rsquo;re looking at a scenario where the site&amp;rsquo;s unwillingness to deal with other login methods shoves friction on the end-user.&lt;/p>
-&lt;h3 id="what-makes-them-tragic">What makes them tragic:&lt;/h3>
-&lt;ol>
-&lt;li>Multiple devices. Who doesn&amp;rsquo;t use at least a few computers weekly? I don&amp;rsquo;t have my email on my gaming PC, nor do I have it on my work laptops.&lt;/li>
-&lt;li>Slower. From 2 seconds slower to minutes slower, depending on SMTP delays as well as how awkward it is to get the link to the right browser.&lt;/li>
-&lt;li>Anti-mobile. As mentioned by 404 in their own article, this breaks the ability to use in-app browsers, which is quite annoying especially for RSS reader type apps. It makes interacting with any local link in the RSS feed extremely annoying.&lt;/li>
-&lt;li>Indirect security downsides. Pushing people to access personal email on work devices (or vice-versa) isn&amp;rsquo;t exactly a win for security.&lt;/li>
-&lt;/ol>
-&lt;p>Another annoying &lt;em>passwordless&lt;/em> system is to email or SMS an OTP the end user can type in.&lt;/p>
-&lt;p>While this sucks, it at least allows you to easily log in in situations where you don&amp;rsquo;t have a clear and easy copy/paste path from the email client to the browser you want to log in to.&lt;/p>
-&lt;p>&lt;a href="https://stratechery.com/">Stratechery&lt;/a>, powered by &lt;a href="https://passport.online">Passport&lt;/a>, uses this type of scheme (click link OR type in OTP), which is still shifting annoyances onto end-users to free developers from implementing passkeys, but at least has a bit more of an appreciation for end-users.&lt;/p>
-&lt;p>If you insist on using magic/tragic links by default, at least consider offering a robust alternative, such as &lt;a href="https://fidoalliance.org/passkeys/">passkeys&lt;/a>, especially if your audience is technical and privacy-focused.&lt;/p>
-&lt;p>&lt;em>Update: This great post by Ricky Mondello was pointed out to me and explains how passkeys can make this better. I highly recommend reading it.&lt;/em> &lt;a href="https://rmondello.com/2025/01/02/magic-links-and-passkeys/">Magic Links Have Rough Edges, but Passkeys Can Smooth Them Over&lt;/a>&lt;/p>
+async src="//gc.zgo.at/count.js"&gt;&lt;/script&gt;</content></item><item><title>Magic/Tragic Email Links: Don't make them the only option</title><link>https://recyclebin.zip/posts/annoyinglinks/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/annoyinglinks/</guid><description>&lt;p&gt;The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link"&gt;futuristic PDA&lt;/a&gt;. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link"&gt;Auth0&lt;/a&gt; use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p&gt;
+&lt;p&gt;Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/"&gt;404 Media&lt;/a&gt;, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/"&gt;&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a&gt; in defense of so-called magic links.&lt;/p&gt;
+&lt;p&gt;Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p&gt;</description><content>&lt;p&gt;The term &amp;ldquo;Magic Links&amp;rdquo; once meant a &lt;a href="https://en.wikipedia.org/wiki/Magic_Link"&gt;futuristic PDA&lt;/a&gt;. Nowdays, companies like &lt;a href="https://auth0.com/docs/authenticate/passwordless/authentication-methods/email-magic-link"&gt;Auth0&lt;/a&gt; use it to refer to the slightly-magical feat of including a login link in an email.&lt;/p&gt;
+&lt;p&gt;Last week, the great website you should subscribe to if you haven&amp;rsquo;t already (it&amp;rsquo;s great, when you&amp;rsquo;re not logged out), &lt;a href="https://www.404media.co/"&gt;404 Media&lt;/a&gt;, posted &lt;a href="https://www.404media.co/we-dont-want-your-password-3/"&gt;&amp;ldquo;We Don&amp;rsquo;t Want Your Password&amp;rdquo;&lt;/a&gt; in defense of so-called magic links.&lt;/p&gt;
+&lt;p&gt;Of course, as stated in the article, such email links are harder to phish than passwords, can&amp;rsquo;t lead to a breach of passwords, and protect the site itself against users who might reuse passwords previously compromised.&lt;/p&gt;
+&lt;p&gt;The article even covers some of my annoyances with this system, but throws out this sentence:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="https://www.404media.co/we-dont-want-your-password-3/"&gt;We find this to be a much easier login process and wish it was more common across the web where appropriate.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Easier than what? Easier than a long password, without a password manager? Easier than a passkey? Easier than an OTP sent to the same email address?&lt;/p&gt;
+&lt;p&gt;This sentence reads to me as one written by someone mostly working and &lt;em&gt;living&lt;/em&gt; from a single laptop and mobile device. The second part of the sentence, calling for more sites to do this is why I am writing this.&lt;/p&gt;
+&lt;p&gt;For any scenario with a minimal amount of complexity, like users with multiple computers, and you&amp;rsquo;re looking at a scenario where the site&amp;rsquo;s unwillingness to deal with other login methods shoves friction on the end-user.&lt;/p&gt;
+&lt;h3 id="what-makes-them-tragic"&gt;What makes them tragic:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Multiple devices. Who doesn&amp;rsquo;t use at least a few computers weekly? I don&amp;rsquo;t have my email on my gaming PC, nor do I have it on my work laptops.&lt;/li&gt;
+&lt;li&gt;Slower. From 2 seconds slower to minutes slower, depending on SMTP delays as well as how awkward it is to get the link to the right browser.&lt;/li&gt;
+&lt;li&gt;Anti-mobile. As mentioned by 404 in their own article, this breaks the ability to use in-app browsers, which is quite annoying especially for RSS reader type apps. It makes interacting with any local link in the RSS feed extremely annoying.&lt;/li&gt;
+&lt;li&gt;Indirect security downsides. Pushing people to access personal email on work devices (or vice-versa) isn&amp;rsquo;t exactly a win for security.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Another annoying &lt;em&gt;passwordless&lt;/em&gt; system is to email or SMS an OTP the end user can type in.&lt;/p&gt;
+&lt;p&gt;While this sucks, it at least allows you to easily log in in situations where you don&amp;rsquo;t have a clear and easy copy/paste path from the email client to the browser you want to log in to.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://stratechery.com/"&gt;Stratechery&lt;/a&gt;, powered by &lt;a href="https://passport.online"&gt;Passport&lt;/a&gt;, uses this type of scheme (click link OR type in OTP), which is still shifting annoyances onto end-users to free developers from implementing passkeys, but at least has a bit more of an appreciation for end-users.&lt;/p&gt;
+&lt;p&gt;If you insist on using magic/tragic links by default, at least consider offering a robust alternative, such as &lt;a href="https://fidoalliance.org/passkeys/"&gt;passkeys&lt;/a&gt;, especially if your audience is technical and privacy-focused.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Update: This great post by Ricky Mondello was pointed out to me and explains how passkeys can make this better. I highly recommend reading it.&lt;/em&gt; &lt;a href="https://rmondello.com/2025/01/02/magic-links-and-passkeys/"&gt;Magic Links Have Rough Edges, but Passkeys Can Smooth Them Over&lt;/a&gt;&lt;/p&gt;
 &lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
-async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>The Verge: Subscription and Trackers</title><link>https://recyclebin.zip/posts/vergesub/</link><pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/vergesub/</guid><description>&lt;p>The Verge now has a &lt;a href="https://www.theverge.com/2024/12/3/24306571/verge-subscription-launch-fewer-ads-unlimited-access-full-text-rss">subscription&lt;/a> offering.&lt;/p>
-&lt;p>RSS feeds? Great. Fewer ads and trackers? Sounds promising. But how much less annoying is it actually?&lt;/p>
-&lt;p>To find out, I disabled my fortress of ad and tracker blocking (clean browser profile, no extensions, no Little Snitch, VPN-ed into a naked network). Then, I tested a &lt;a href="https://www.theverge.com/2024/11/29/24308950/hyundai-ioniq-5-n-review-price-specs-photos">car&lt;/a> review across three setups, scrolling the page in 15 seconds each time.&lt;/p>
-&lt;p>Here are the very manual, not-at-all scientific results:&lt;/p></description><content>&lt;p>The Verge now has a &lt;a href="https://www.theverge.com/2024/12/3/24306571/verge-subscription-launch-fewer-ads-unlimited-access-full-text-rss">subscription&lt;/a> offering.&lt;/p>
-&lt;p>RSS feeds? Great. Fewer ads and trackers? Sounds promising. But how much less annoying is it actually?&lt;/p>
-&lt;p>To find out, I disabled my fortress of ad and tracker blocking (clean browser profile, no extensions, no Little Snitch, VPN-ed into a naked network). Then, I tested a &lt;a href="https://www.theverge.com/2024/11/29/24308950/hyundai-ioniq-5-n-review-price-specs-photos">car&lt;/a> review across three setups, scrolling the page in 15 seconds each time.&lt;/p>
-&lt;p>Here are the very manual, not-at-all scientific results:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Configuration&lt;/th>
-&lt;th>Requests&lt;/th>
-&lt;th>MB Transferred&lt;/th>
-&lt;th>MB Resources&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>No Ad Block or Sub&lt;/td>
-&lt;td>805&lt;/td>
-&lt;td>8.3&lt;/td>
-&lt;td>43.2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>No Ad Block with Sub&lt;/td>
-&lt;td>611&lt;/td>
-&lt;td>2.6&lt;/td>
-&lt;td>27.2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Ad Block with Sub&lt;/td>
-&lt;td>128&lt;/td>
-&lt;td>0.8&lt;/td>
-&lt;td>7.65&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="tldr">TL;DR&lt;/h2>
-&lt;p>Even with a subscription, The Verge still drowns you in ads and trackers—just slightly fewer. Their privacy policy mentions &lt;strong>865&lt;/strong> data partners (&lt;strong>533&lt;/strong> claiming “strictly necessary” cookies).&lt;/p>
-&lt;p>For that reason, I&amp;rsquo;d recommend not allow listing them in your ad blocker even if you are a paid customer, but it might make you feel better knowing they get revenue even though you&amp;rsquo;re blocking the ads?&lt;/p>
+async src="//gc.zgo.at/count.js"&gt;&lt;/script&gt;</content></item><item><title>The Verge: Subscription and Trackers</title><link>https://recyclebin.zip/posts/vergesub/</link><pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/vergesub/</guid><description>&lt;p&gt;The Verge now has a &lt;a href="https://www.theverge.com/2024/12/3/24306571/verge-subscription-launch-fewer-ads-unlimited-access-full-text-rss"&gt;subscription&lt;/a&gt; offering.&lt;/p&gt;
+&lt;p&gt;RSS feeds? Great. Fewer ads and trackers? Sounds promising. But how much less annoying is it actually?&lt;/p&gt;
+&lt;p&gt;To find out, I disabled my fortress of ad and tracker blocking (clean browser profile, no extensions, no Little Snitch, VPN-ed into a naked network). Then, I tested a &lt;a href="https://www.theverge.com/2024/11/29/24308950/hyundai-ioniq-5-n-review-price-specs-photos"&gt;car&lt;/a&gt; review across three setups, scrolling the page in 15 seconds each time.&lt;/p&gt;
+&lt;p&gt;Here are the very manual, not-at-all scientific results:&lt;/p&gt;</description><content>&lt;p&gt;The Verge now has a &lt;a href="https://www.theverge.com/2024/12/3/24306571/verge-subscription-launch-fewer-ads-unlimited-access-full-text-rss"&gt;subscription&lt;/a&gt; offering.&lt;/p&gt;
+&lt;p&gt;RSS feeds? Great. Fewer ads and trackers? Sounds promising. But how much less annoying is it actually?&lt;/p&gt;
+&lt;p&gt;To find out, I disabled my fortress of ad and tracker blocking (clean browser profile, no extensions, no Little Snitch, VPN-ed into a naked network). Then, I tested a &lt;a href="https://www.theverge.com/2024/11/29/24308950/hyundai-ioniq-5-n-review-price-specs-photos"&gt;car&lt;/a&gt; review across three setups, scrolling the page in 15 seconds each time.&lt;/p&gt;
+&lt;p&gt;Here are the very manual, not-at-all scientific results:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Configuration&lt;/th&gt;
+&lt;th&gt;Requests&lt;/th&gt;
+&lt;th&gt;MB Transferred&lt;/th&gt;
+&lt;th&gt;MB Resources&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;No Ad Block or Sub&lt;/td&gt;
+&lt;td&gt;805&lt;/td&gt;
+&lt;td&gt;8.3&lt;/td&gt;
+&lt;td&gt;43.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;No Ad Block with Sub&lt;/td&gt;
+&lt;td&gt;611&lt;/td&gt;
+&lt;td&gt;2.6&lt;/td&gt;
+&lt;td&gt;27.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Ad Block with Sub&lt;/td&gt;
+&lt;td&gt;128&lt;/td&gt;
+&lt;td&gt;0.8&lt;/td&gt;
+&lt;td&gt;7.65&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="tldr"&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;Even with a subscription, The Verge still drowns you in ads and trackers—just slightly fewer. Their privacy policy mentions &lt;strong&gt;865&lt;/strong&gt; data partners (&lt;strong&gt;533&lt;/strong&gt; claiming “strictly necessary” cookies).&lt;/p&gt;
+&lt;p&gt;For that reason, I&amp;rsquo;d recommend not allow listing them in your ad blocker even if you are a paid customer, but it might make you feel better knowing they get revenue even though you&amp;rsquo;re blocking the ads?&lt;/p&gt;
 &lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
-async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>Apple: Let us be Polymacous</title><link>https://recyclebin.zip/posts/2024-11-21-polymacous/</link><pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-11-21-polymacous/</guid><description>&lt;p>Apple&amp;rsquo;s focus on security and privacy is making them release features that only work on devices on the same iCloud account, which will counterintuitively hurt people&amp;rsquo;s privacy as they log in to personal iCloud accounts on devices owned by their employers. As the Apple &lt;em>blogosphere&lt;/em> is dominated by very good independant writers, this is an issue that is rarely discussed, as it impacts people working for larger organizations with dedicated Mac hardware.&lt;/p></description><content>&lt;p>Apple&amp;rsquo;s focus on security and privacy is making them release features that only work on devices on the same iCloud account, which will counterintuitively hurt people&amp;rsquo;s privacy as they log in to personal iCloud accounts on devices owned by their employers. As the Apple &lt;em>blogosphere&lt;/em> is dominated by very good independant writers, this is an issue that is rarely discussed, as it impacts people working for larger organizations with dedicated Mac hardware.&lt;/p>
-&lt;p>It took Apple years to enable family photo sharing in Photos, as if all users managed photos individually. Eventually, they delivered a solid feature for shared family libraries. Before they did, people were sharing photos using third party applications, and in many cases, reducing their own privacy levels by involving more companies in the process.&lt;/p>
-&lt;p>Similarly, Apple seems to assume we all use a single Mac tied to the same iCloud account as our iPhone, Apple Watch, iPad, and Vision Pro, leading to people performing actions that degrade their own privacy.&lt;/p>
-&lt;p>The &lt;a href="https://www.apple.com/ca/pro-display-xdr/specs/">Pro Display XDR&lt;/a> and &lt;a href="https://www.apple.com/ca/studio-display/specs/">Studio Display&lt;/a>, released in 2019 and 2022 respectively, have a single input. &lt;a href="https://support.apple.com/en-us/105126">Target Display Mode&lt;/a> hasn&amp;rsquo;t been a thing since 2014.&lt;/p>
-&lt;p>This creates a dilemma for those needing both a personal and work Mac: use non-Apple monitors, dedicate significant desk space to a single-use Apple display, or manually switch cables, since Thunderbolt switching remains uncommon and expensive.&lt;/p>
-&lt;p>Except for Dell&amp;rsquo;s &lt;a href="https://www.dell.com/en-ca/shop/dell-ultrasharp-32-6k-monitor-u3224kb/apd/210-bhbz/monitors-monitor-accessories">weird looking&lt;/a> 6K monitor, there aren&amp;rsquo;t many great high resolution monitors on the market. The gaming monitor market is doing great, but those monitors are quite different from what is ideal to do work.&lt;/p>
-&lt;p>Software could help. &lt;a href="https://support.apple.com/en-us/102459">Universal Control&lt;/a> could let you work across two separate Macs easily. But on the software side, the situation is the same, Apple still believes you don&amp;rsquo;t have a job.&lt;/p>
-&lt;p>You might not want &lt;a href="https://support.apple.com/en-ca/102426">Handoff&lt;/a> to propose opening up your personal Safari tabs on your work computer, and your employer might not want you to use &lt;a href="https://support.apple.com/en-us/102442">Watch Unlock&lt;/a> from your personal watch to their laptop.&lt;/p>
-&lt;p>Still, camera and screen streaming features such as &lt;a href="https://support.apple.com/en-us/102546">Continuity Camera&lt;/a>, &lt;a href="https://support.apple.com/en-us/102597">SideCar&lt;/a> and &lt;a href="https://support.apple.com/en-us/118521">Mac Virtual Display&lt;/a> which could be extremely useful, but instantly become pointless when you realize you have to be on the same iCloud account on both devices.&lt;/p>
-&lt;p>While privacy and security concerns justified limiting these features to a single iCloud account, both wireless and wired connections are supported, and Apple excels as implementing secure solutions to complex problems.&lt;/p>
-&lt;p>Why not let me use Sidecar with my personal iPad over USB? The connection could enable screen transfer only, respecting MDM restrictions and preventing actions like data transfer.&lt;/p>
-&lt;p>Continuity Camera could work similarly, streaming my iPhone’s “webcam” to my work Mac via USB.&lt;/p>
-&lt;p>Mac Virtual Display on visionOS is, for me, the killer app on visionOS. Even with a developer strap, Vision Pro could justify its presence in my travel bag by serving as a computer with personal apps that can also be used as a massive monitor for hotel work. Because of the current restrictions, the Vision Pro becomes much less useful as I do not have a mouse and keyboard for it with me, but I need to travel with an extra monitor or iPad with a &lt;a href="https://astropad.com/product/lunadisplay/">third party dongle&lt;/a>.&lt;/p>
-&lt;p>Today, only independent developers, bloggers, and consultants with all devices on a single iCloud account can achieve this—unless they compromise privacy by logging into iCloud on a work Mac.&lt;/p>
-&lt;p>I doubt Apple will make a multi-input monitor, but they could build secure implementations of these features, with MDM controls for organizations to disable them.&lt;/p>
-&lt;p>Please Apple, make our personal devices feel lighter and more useful in our bags when we travel for work, and most of all, &lt;strong>stop creating a situation that undoubtedly pushes people to log in to work Macs with their personal iCloud accounts&lt;/strong>.&lt;/p>
+async src="//gc.zgo.at/count.js"&gt;&lt;/script&gt;</content></item><item><title>Apple: Let us be Polymacous</title><link>https://recyclebin.zip/posts/2024-11-21-polymacous/</link><pubDate>Thu, 21 Nov 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-11-21-polymacous/</guid><description>&lt;p&gt;Apple&amp;rsquo;s focus on security and privacy is making them release features that only work on devices on the same iCloud account, which will counterintuitively hurt people&amp;rsquo;s privacy as they log in to personal iCloud accounts on devices owned by their employers. As the Apple &lt;em&gt;blogosphere&lt;/em&gt; is dominated by very good independant writers, this is an issue that is rarely discussed, as it impacts people working for larger organizations with dedicated Mac hardware.&lt;/p&gt;</description><content>&lt;p&gt;Apple&amp;rsquo;s focus on security and privacy is making them release features that only work on devices on the same iCloud account, which will counterintuitively hurt people&amp;rsquo;s privacy as they log in to personal iCloud accounts on devices owned by their employers. As the Apple &lt;em&gt;blogosphere&lt;/em&gt; is dominated by very good independant writers, this is an issue that is rarely discussed, as it impacts people working for larger organizations with dedicated Mac hardware.&lt;/p&gt;
+&lt;p&gt;It took Apple years to enable family photo sharing in Photos, as if all users managed photos individually. Eventually, they delivered a solid feature for shared family libraries. Before they did, people were sharing photos using third party applications, and in many cases, reducing their own privacy levels by involving more companies in the process.&lt;/p&gt;
+&lt;p&gt;Similarly, Apple seems to assume we all use a single Mac tied to the same iCloud account as our iPhone, Apple Watch, iPad, and Vision Pro, leading to people performing actions that degrade their own privacy.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://www.apple.com/ca/pro-display-xdr/specs/"&gt;Pro Display XDR&lt;/a&gt; and &lt;a href="https://www.apple.com/ca/studio-display/specs/"&gt;Studio Display&lt;/a&gt;, released in 2019 and 2022 respectively, have a single input. &lt;a href="https://support.apple.com/en-us/105126"&gt;Target Display Mode&lt;/a&gt; hasn&amp;rsquo;t been a thing since 2014.&lt;/p&gt;
+&lt;p&gt;This creates a dilemma for those needing both a personal and work Mac: use non-Apple monitors, dedicate significant desk space to a single-use Apple display, or manually switch cables, since Thunderbolt switching remains uncommon and expensive.&lt;/p&gt;
+&lt;p&gt;Except for Dell&amp;rsquo;s &lt;a href="https://www.dell.com/en-ca/shop/dell-ultrasharp-32-6k-monitor-u3224kb/apd/210-bhbz/monitors-monitor-accessories"&gt;weird looking&lt;/a&gt; 6K monitor, there aren&amp;rsquo;t many great high resolution monitors on the market. The gaming monitor market is doing great, but those monitors are quite different from what is ideal to do work.&lt;/p&gt;
+&lt;p&gt;Software could help. &lt;a href="https://support.apple.com/en-us/102459"&gt;Universal Control&lt;/a&gt; could let you work across two separate Macs easily. But on the software side, the situation is the same, Apple still believes you don&amp;rsquo;t have a job.&lt;/p&gt;
+&lt;p&gt;You might not want &lt;a href="https://support.apple.com/en-ca/102426"&gt;Handoff&lt;/a&gt; to propose opening up your personal Safari tabs on your work computer, and your employer might not want you to use &lt;a href="https://support.apple.com/en-us/102442"&gt;Watch Unlock&lt;/a&gt; from your personal watch to their laptop.&lt;/p&gt;
+&lt;p&gt;Still, camera and screen streaming features such as &lt;a href="https://support.apple.com/en-us/102546"&gt;Continuity Camera&lt;/a&gt;, &lt;a href="https://support.apple.com/en-us/102597"&gt;SideCar&lt;/a&gt; and &lt;a href="https://support.apple.com/en-us/118521"&gt;Mac Virtual Display&lt;/a&gt; which could be extremely useful, but instantly become pointless when you realize you have to be on the same iCloud account on both devices.&lt;/p&gt;
+&lt;p&gt;While privacy and security concerns justified limiting these features to a single iCloud account, both wireless and wired connections are supported, and Apple excels as implementing secure solutions to complex problems.&lt;/p&gt;
+&lt;p&gt;Why not let me use Sidecar with my personal iPad over USB? The connection could enable screen transfer only, respecting MDM restrictions and preventing actions like data transfer.&lt;/p&gt;
+&lt;p&gt;Continuity Camera could work similarly, streaming my iPhone’s “webcam” to my work Mac via USB.&lt;/p&gt;
+&lt;p&gt;Mac Virtual Display on visionOS is, for me, the killer app on visionOS. Even with a developer strap, Vision Pro could justify its presence in my travel bag by serving as a computer with personal apps that can also be used as a massive monitor for hotel work. Because of the current restrictions, the Vision Pro becomes much less useful as I do not have a mouse and keyboard for it with me, but I need to travel with an extra monitor or iPad with a &lt;a href="https://astropad.com/product/lunadisplay/"&gt;third party dongle&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Today, only independent developers, bloggers, and consultants with all devices on a single iCloud account can achieve this—unless they compromise privacy by logging into iCloud on a work Mac.&lt;/p&gt;
+&lt;p&gt;I doubt Apple will make a multi-input monitor, but they could build secure implementations of these features, with MDM controls for organizations to disable them.&lt;/p&gt;
+&lt;p&gt;Please Apple, make our personal devices feel lighter and more useful in our bags when we travel for work, and most of all, &lt;strong&gt;stop creating a situation that undoubtedly pushes people to log in to work Macs with their personal iCloud accounts&lt;/strong&gt;.&lt;/p&gt;
 &lt;script data-goatcounter="https://recyclebin.goatcounter.com/count"
-async src="//gc.zgo.at/count.js">&lt;/script></content></item><item><title>Before Preaching, Stop Punching Yourself</title><link>https://recyclebin.zip/posts/2024-10-04-awareness-month/</link><pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-10-04-awareness-month/</guid><description>&lt;p>&lt;em>Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself">JupiterOne blog&lt;/a>.&lt;/em>&lt;/p>
-&lt;p>Some seem to love Cyber Security Awareness Month. Of course, at least as many despise it, because it makes no sense to have intense focus for one month and then forget about it for the other 11.&lt;/p>
-&lt;p>Without saying if I love it or if I hate it, I decided to write a set of rules. If any of this is a problem in your organization, you HAVE to fix it before you are allowed to fill up user’s inboxes with more “awareness”.&lt;/p></description><content>&lt;p>&lt;em>Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself">JupiterOne blog&lt;/a>.&lt;/em>&lt;/p>
-&lt;p>Some seem to love Cyber Security Awareness Month. Of course, at least as many despise it, because it makes no sense to have intense focus for one month and then forget about it for the other 11.&lt;/p>
-&lt;p>Without saying if I love it or if I hate it, I decided to write a set of rules. If any of this is a problem in your organization, you HAVE to fix it before you are allowed to fill up user’s inboxes with more “awareness”.&lt;/p>
-&lt;p>Have you recently told someone working in HR to not open attachments in email? Have you told someone to not click things on the &lt;a href="https://x.com/swagitda_/status/1503751776134180873">thing-clicking machine&lt;/a>?&lt;/p>
-&lt;p>Here are signs you shouldn’t hire some “creatives” to generate “content” to “educate users” this year:&lt;/p>
-&lt;h1 id="your-company-blocks-copypaste-on-a-website-login-form">Your company blocks copy/paste on a website login form&lt;/h1>
-&lt;p>Are you making any person using a password manager to log in to your service hate computers, your company AND behave less securely by blocking paste for “security reasons” ?&lt;/p>
-&lt;p>Are you driving people to install &lt;a href="https://github.com/jswanner/DontF-WithPaste">browser extensions&lt;/a> just to deal with the completely irrational behavior your login form exhibits?&lt;/p>
-&lt;p>Why? Do you WANT people to reuse passwords from other sites, making sure their accounts on your service will get compromised, or do you simply want people to use simple passwords that are easier to crack?&lt;/p>
-&lt;p>Did an auditor tell you to do this, and nobody dared argue?&lt;/p>
-&lt;p>Go fix this before you tell any of your employees or customers ANYTHING about cyber security awareness month.&lt;/p>
-&lt;h1 id="password-expiration">Password expiration&lt;/h1>
-&lt;p>Because you want your helpdesk to suffer, you make passwords expire. Sure, there is absolutely no security benefit to it because people only rotate the last digit in the password, but in 2006, a &lt;a href="https://en.wikipedia.org/wiki/Qualified_Security_Assessor">QSA&lt;/a> told you to do this every 90 days.&lt;/p>
-&lt;p>NIST started recommending that practice to end years ago. This fall, they’ve made that guidance stronger.&lt;/p>
-&lt;p>If your employees or customers have to rotate passwords at a certain frequency, you are hereby prohibited from celebrating October Cyber Security Awareness Month.&lt;/p>
-&lt;h1 id="no-password-manager-for-employees">No password manager for employees&lt;/h1>
-&lt;p>Are you really going to send an animated video of poor quality to people, instructing them not to reuse passwords, while simultaneously not providing them with an easy to use password manager?&lt;/p>
-&lt;p>Slow down, Satan!&lt;/p>
-&lt;h1 id="weak-or-no-mfa">Weak or no MFA&lt;/h1>
-&lt;p>Stop blaming people for leaking credentials when &lt;a href="https://fidoalliance.org/fido2/">technical solutions&lt;/a> exist. Imagine if cars came with a button that made the airbags pop, and car manufacturers repeatedly told you not to press it. Just REMOVE THE FACE PUNCHING BUTTON!&lt;/p>
-&lt;h1 id="your-hr-departments-sends-emails-indistinguishable-from-phishing">Your HR departments sends emails indistinguishable from phishing&lt;/h1>
-&lt;p>Explaining to someone what is and is not phishing is very difficult. Most people do not know that email can be sent without authentication. Many of you reading this are already thinking of yelling at me in your heads “But but SPF! DKIM/DMARC! Hasn’t this guy heard of BIMI?”. Alright.&lt;/p>
-&lt;p>But in reality, spam will also come from domains that aren’t the right one. Sure, it’s not exactly the right domain, but it looks like it. Or it’s a completely unrelated domain, with a reply-to that seems to be legit.&lt;/p>
-&lt;p>How do you explain any of this to someone and then expect them not to be confused when the HR department sends out a survey asking for sensitive information, hosted on a free SurveyMonkey page that isn’t on a subdomain of your company? Or when your support team does the same to a customer, using some support SaaS tool that isn’t on your domain?&lt;/p>
-&lt;h1 id="laptops-that-cant-survive-hotel-wi-fi">Laptops that can’t survive hotel Wi-Fi&lt;/h1>
-&lt;p>VPN VPN VPN VPN VPN VPN VPN. Why do so many people sound like a sponsored Youtube video?&lt;/p>
-&lt;p>If you’re recommending that people use a VPN when using “public Wi-Fi” because you’re afraid of data being sniffed or modified in transit, spend some time &lt;a href="https://chromeenterprise.google/policies/#SSLErrorOverrideAllowed">hardening browsers&lt;/a> and laptops, and ensure you do not provide any service over unencrypted protocols like POP3 or IMAP without TLS.&lt;/p>
-&lt;p>Once you’re done with that, when you get the urge to yell “VPN” again at a random person using a laptop at Starbucks, read &lt;a href="https://www.cs.umd.edu/~akgul/papers/vpn-ads.pdf">this&lt;/a> to relax instead.&lt;/p>
-&lt;h1 id="authenticating-callers-at-the-help-desk-with-security-questions">Authenticating callers at the help desk with security questions&lt;/h1>
-&lt;p>Security questions are just passwords, but worse. Not only are they not safe, they’re not user friendly. How would I remember what I said my favorite dessert is? And if I said “poutine”, then everyone knows anyway.&lt;/p>
-&lt;p>Worse, relying on “private” information like SSNs. Social security numbers for pretty much everyone have been leaked at least once, so why are we using this to authenticate anyone?&lt;/p>
-&lt;p>Instead of having everyone in your company waste an hour looking at videos about not putting passwords on post-it notes, rework your password reset process to use multifactor authentication.&lt;/p>
-&lt;h1 id="next-time-to-celebrate">Next? Time to celebrate!&lt;/h1>
-&lt;p>If you did get rid of one of these outdated practices, you’re now allowed to celebrate by sharing with your employees and/or customers why you did it, and how they’re now safer AND more productive.&lt;/p>
-&lt;p>You’ve used October Cyber Security Awareness month as an excuse to improve cyber security.&lt;/p>
-&lt;p>Well done!&lt;/p></content></item><item><title>Managing Apple Intelligence via MDM</title><link>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</guid><description>&lt;p>This summer, since WWDC, I was repeatedly asked:&lt;/p>
-&lt;blockquote>
-&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>&lt;/blockquote>
-&lt;p>Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
-The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p></description><content>&lt;p>This summer, since WWDC, I was repeatedly asked:&lt;/p>
-&lt;blockquote>
-&lt;p>How do I disable Apple Intelligence on our company laptops?&lt;/p>&lt;/blockquote>
-&lt;p>Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
-The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p>
-&lt;p>Now, with the release of iOS 18 and macOS 15, we&amp;rsquo;ve got some of those settings to play with.
-Apple Intelligence shows up in iOS 18.1 and macOS 15.1, so you can prepare.&lt;/p>
-&lt;p>As with most settings that make the device less useful, they require a supervised device, so forget doing that on BYOD.&lt;/p>
-&lt;p>The settings are in &lt;a href="https://developer.apple.com/documentation/devicemanagement/restrictions">restrictions&lt;/a>. By searching for &amp;ldquo;iOS 18 and later&amp;rdquo; on the page, we can find the new settings, most of which are Apple Intelligence related:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Setting&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>allowGenmoji&lt;/td>
-&lt;td>If false, prohibits creating new Genmoji. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>allowImagePlayground&lt;/td>
-&lt;td>If false, prohibits the use of image generation. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>allowImageWand&lt;/td>
-&lt;td>If false, prohibits the use of Image Wand. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>allowPersonalizedHandwritingResults&lt;/td>
-&lt;td>If false, prevents the system from generating text in the user’s handwriting. Requires a supervised device. Available in iOS 18 and later.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>allowWritingTools&lt;/td>
-&lt;td>If false, disables Apple Intelligence writing tools. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Most people asking me how to disable Apple Intelligence this summer were specifically worried about ChatGPT/OpenAI integration, which has not been released yet.&lt;/p>
-&lt;p>Based on those restrictions, it&amp;rsquo;s safe to assume a similar setting will be added to iOS before the feature is released.&lt;/p></content></item><item><title>AutoSpill the beans: not THAT big a deal</title><link>https://recyclebin.zip/posts/2023-12-21-autospill/</link><pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-12-21-autospill/</guid><description>&lt;p>Research can be interesting, useful for risk management purposes, helpful to those building software and even entertaining.&lt;/p>
-&lt;p>Sometimes, the usefulness of research is undone by the public discourse on a security issue.&lt;/p>
-&lt;p>In the last few weeks, you’ve heard of “&lt;a href="https://i.blackhat.com/EU-23/Presentations/EU-23-Gangwal-AutoSpill-Zero-Effort-Credential-Stealing.pdf">AutoSpill&lt;/a>”, a vulnerability affecting multiple password managers on Android.&lt;/p>
-&lt;p>I’ve heard everything about this vulnerability on LinkedIn. The posts are often accompanied by a AI-Generated image of a crying Android baby and broken padlocks.&lt;/p></description><content>&lt;p>Research can be interesting, useful for risk management purposes, helpful to those building software and even entertaining.&lt;/p>
-&lt;p>Sometimes, the usefulness of research is undone by the public discourse on a security issue.&lt;/p>
-&lt;p>In the last few weeks, you’ve heard of “&lt;a href="https://i.blackhat.com/EU-23/Presentations/EU-23-Gangwal-AutoSpill-Zero-Effort-Credential-Stealing.pdf">AutoSpill&lt;/a>”, a vulnerability affecting multiple password managers on Android.&lt;/p>
-&lt;p>I’ve heard everything about this vulnerability on LinkedIn. The posts are often accompanied by a AI-Generated image of a crying Android baby and broken padlocks.&lt;/p>
-&lt;p>Quotes ranged from calls to warn everyone about this important vulnerability to “you should never use password manager browser extensions” (paraphrased).&lt;/p>
-&lt;p>When we make these types of claims, as security professionals, we risk scaring people away from a tool that reduces the risk they are exposed to.&lt;/p>
-&lt;p>If a single person stopped using a password manager and reverted to a text file, to using the same password everywhere, to using an “algorithm” in their heads to generate “different” passwords, that person is now less secure due to the discourse of security professionals on social media.&lt;/p>
-&lt;h2 id="the-facts-about-the-vulnerability">The facts about the vulnerability&lt;/h2>
-&lt;ol>
-&lt;li>Autofill vulnerabilities aren&amp;rsquo;t new. Yes, they&amp;rsquo;re a risk, but the majority of autofill action happens on legitimate sites, preventing phishing. Drama much?&lt;/li>
-&lt;li>Most password managers ask before spilling the beans. Calm down, it’s not a complete free-for-all.&lt;/li>
-&lt;li>AutoSpill needs a malicious app to work. It&amp;rsquo;s not a web-based 0day in the wild. Walled gardens like App Store or Play Store keep most nasties out.&lt;/li>
-&lt;li>Password managers are patching or have patched this. Fearmongers, please take a seat. By the time you switch to &lt;code>Password123$&lt;/code> or to your “elite brain generated algorithm”, it&amp;rsquo;ll be a non-issue.&lt;/li>
-&lt;/ol></content></item><item><title>Security checklist for families using Apple devices</title><link>https://recyclebin.zip/posts/2023-12-22-apple-family/</link><pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-12-22-apple-family/</guid><description>&lt;h1 id="security-checklist-for-families-using-apple-devices">Security checklist for families using Apple devices&lt;/h1>
-&lt;p>If many people in your family are on the Apple ecosystem, here are a few things worth checking while you’re going to be in the same physical location over the holidays.&lt;/p>
-&lt;p>Ensure they have enough iCloud data and recent backups, then, enable automatic updates, and nudge them into updating (bring a couple chargers!), as these features are recent.&lt;/p>
-&lt;p>If they don’t have any iCloud storage, consider rolling them into your iCloud “Family” to share paid storage, it’s cheap and sometimes worth it versus trying to convince people to pay for backups 😅.&lt;/p></description><content>&lt;h1 id="security-checklist-for-families-using-apple-devices">Security checklist for families using Apple devices&lt;/h1>
-&lt;p>If many people in your family are on the Apple ecosystem, here are a few things worth checking while you’re going to be in the same physical location over the holidays.&lt;/p>
-&lt;p>Ensure they have enough iCloud data and recent backups, then, enable automatic updates, and nudge them into updating (bring a couple chargers!), as these features are recent.&lt;/p>
-&lt;p>If they don’t have any iCloud storage, consider rolling them into your iCloud “Family” to share paid storage, it’s cheap and sometimes worth it versus trying to convince people to pay for backups 😅.&lt;/p>
-&lt;p>Then, go into iCloud Settings/Security and review the following:&lt;/p>
-&lt;ol>
-&lt;li>Enable iCloud &lt;a href="https://developer.apple.com/support/authentication/">Two-Factor Authentication&lt;/a> (2FA) if they don’t have it. No need to go crazy with FIDO keys unless they’re security nerds or at-risk targets.&lt;/li>
-&lt;li>Account Recovery: Make sure everyone has at least one “&lt;a href="https://support.apple.com/en-us/HT212513">Recovery Contact&lt;/a>” to help them back into their Apple IDs if something happens.&lt;/li>
-&lt;li>Legacy Contact: Do the same for “&lt;a href="https://support.apple.com/en-us/102631">Legacy Contacts&lt;/a>”, which can be used to recover access to someone’s iCloud data after they pass. It’s less awkward to do this while reviewing a bunch of security settings than to bring it up on its own randomly!&lt;/li>
-&lt;/ol>
-&lt;p>As a bonus, if you’ve got security enthusiasts around you who have up to date devices on their Apple accounts, it’s a good time to enable &lt;a href="https://support.apple.com/en-us/HT213465">iMessage Contact Key Verification&lt;/a>.&lt;/p>
-&lt;p>Most people don’t need it, but if they’re interested in security, it’s a nice feature to demo while in physical proximity.&lt;/p></content></item><item><title>Using HomeKit Devices Across VLANs and Subnets</title><link>https://recyclebin.zip/posts/medium-posts-homekit-vlans/</link><pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/medium-posts-homekit-vlans/</guid><description>&lt;p>This article was originally posted on &lt;a href="https://medium.com/@gepeto42/using-homekit-devices-across-vlans-and-subnets-aa5ae1024939">Medium&lt;/a>. As I am removing my Medium articles, this will be the archive for this content.&lt;/p>
-&lt;p>Originally written on September 8, 2017.&lt;/p>
-&lt;p>&lt;em>TL;DR Version: Make sure your iOS devices can connect to the HomeKit Devices on port 80 and 443, and replicate mDNS from VLAN/Subnet to VLAN/Subnet with Avahi.&lt;/em>&lt;/p>
-&lt;p>So, you’ve setup multiple VLANs and SSIDs at home, you’re keeping all those Internet Connected toasters away from the LAN where your crown jewels sit.&lt;/p></description><content>&lt;p>This article was originally posted on &lt;a href="https://medium.com/@gepeto42/using-homekit-devices-across-vlans-and-subnets-aa5ae1024939">Medium&lt;/a>. As I am removing my Medium articles, this will be the archive for this content.&lt;/p>
-&lt;p>Originally written on September 8, 2017.&lt;/p>
-&lt;p>&lt;em>TL;DR Version: Make sure your iOS devices can connect to the HomeKit Devices on port 80 and 443, and replicate mDNS from VLAN/Subnet to VLAN/Subnet with Avahi.&lt;/em>&lt;/p>
-&lt;p>So, you’ve setup multiple VLANs and SSIDs at home, you’re keeping all those Internet Connected toasters away from the LAN where your crown jewels sit.&lt;/p>
-&lt;p>Good! Except, woops, a ton of stuff is broken?&lt;/p>
-&lt;p>HomeKit uses the &lt;a href="https://developer.apple.com/support/homekit-accessory-protocol/">HAP Protocol&lt;/a>, which actually uses peer-to-peer connectivity for really fast action when you try to perform actions. If your device is unable to reach the HomeKit device, it will, through iCloud, try to perform the HomeKit action through your AppleTV.&lt;/p>
-&lt;p>If your AppleTV is unable to reach the HomeKit device, the request will fail.&lt;/p>
-&lt;p>If your AppleTV is in the right subnet and DOES reach it, it will work, however, it will be slower than if it had worked directly from your device. And believe me, 500ms of lag when trying to turn on the lights can be a significant pain.&lt;/p>
-&lt;p>Here is how to get it working almost as if it was on the same network.&lt;/p>
-&lt;p>&lt;strong>Note&lt;/strong>: This is not the most restrictive configuration possible. I am sure you can lock it down more, especially if everything you have has known hostnames or assigned IPs that do not change.&lt;/p>
-&lt;ol>
-&lt;li>Allow your main LAN to connect to port 80 and 443 on HomeKit devices. You can do this via IP to IP + port rules, or, if you do not mind your main network reaching the IoT network, simply allow 80 and 443 from Main to IoT LANs. You can make this more restrictive by only allowing the static or reserved IPs of devices you use with HomeKit. Be sure to include your AppleTV or iPad so your schedules work when you’re away.&lt;/li>
-&lt;li>Disable Guest Isolation on your IoT SSID while you pair the devices (the pairing process seems to require p2p connectivity for some devices, and in any case, some apps will force you to send Wi-Fi settings from your phone, preventing you from being on the main SSID while you do this).&lt;/li>
-&lt;li>Join your IoT SSID with your phone.&lt;/li>
-&lt;li>Add the device to HomeKit. I tested this with iDevices devices (Ferrari LaFerrari anyone?). Their process for adding devices is very brittle, and I had a lot of issues, and had to try again many times. I had to do that the first time I set them up on a single Wi-Fi and VLAN however.&lt;/li>
-&lt;li>Install &lt;a href="https://avahi.org/">Avahi&lt;/a> on your Firewall, or on any device that sees both the Main and the IoT VLAN. It can be made to work on many devices, but of course if you are using pfSense it is available as a &lt;a href="https://doc.pfsense.org/index.php/Avahi_package">package&lt;/a>.&lt;/li>
-&lt;li>Enable Avahi, and make sure it is listening on your IoT and your Main interface (deny it everywhere else). This is where you could potentially lock this down more: create custom rules and settings so it only works from specific IoT devices. In my case, it wasn’t worth it.&lt;/li>
-&lt;li>Reconnect your phone to your main SSID.&lt;/li>
-&lt;li>Turn the lights on and off and on and off and on and off. And on and off and on and off. &lt;strong>It works!&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>Re-enable guest isolation on your IoT SSID&lt;/strong>. Do not forget this step, you don’t want your toaster to hack your fridge do you? &lt;em>Note: Some APs are very hardcore with their guest isolation, and will block traffic from/to any RFC1918 address. If enabling guest isolation breaks your previously working setup, look to see if you can create custom ACLs on your AP. If not, I would recommend creating an SSID only for HomeKit devices, and leaving guest isolation disabled. In some cases, you will need to whitelist your Main LAN from it completely, but this should be filtered by your firewall anyway. On some, such as Ubiquiti UniFi gear, you need to allow the guest isolated SSID to talk to 224.0.0.251 for mDNS.&lt;/em>&lt;/li>
-&lt;/ol></content></item><item><title>Scams targeting Google Groups</title><link>https://recyclebin.zip/posts/2023-05-12-google-groups/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-05-12-google-groups/</guid><description>&lt;h1 id="scams-targeting-google-groups">Scams targeting Google Groups&lt;/h1>
-&lt;p>This article was originally published on the &lt;a href="https://fleetdm.com/blog/scams-targeting-google-groups">Fleet blog&lt;/a>. Minor style changes were applied.&lt;/p>
-&lt;p>The Fleet handbook contains detailed information on how we have configured Google Workspace &lt;a href="https://fleetdm.com/handbook/security#email-security">to block spam and phishing&lt;/a>. Gmail has some exciting email security features, such as flagging or blocking mail from people with the same name as employees or quarantining it.&lt;/p>
-&lt;p>These features are great for protecting from business email compromise (BEC) and other types of social engineering attacks.&lt;/p></description><content>&lt;h1 id="scams-targeting-google-groups">Scams targeting Google Groups&lt;/h1>
-&lt;p>This article was originally published on the &lt;a href="https://fleetdm.com/blog/scams-targeting-google-groups">Fleet blog&lt;/a>. Minor style changes were applied.&lt;/p>
-&lt;p>The Fleet handbook contains detailed information on how we have configured Google Workspace &lt;a href="https://fleetdm.com/handbook/security#email-security">to block spam and phishing&lt;/a>. Gmail has some exciting email security features, such as flagging or blocking mail from people with the same name as employees or quarantining it.&lt;/p>
-&lt;p>These features are great for protecting from business email compromise (BEC) and other types of social engineering attacks.&lt;/p>
-&lt;p>With this configuration, many of the less targeted, basic attempts at BEC get filtered, which is why an attempt we received a few weeks ago caught our attention.&lt;/p>
-&lt;p>Google Groups mailing lists have much weaker protection, and the Gmail security settings could create a false sense of security.&lt;/p>
-&lt;h2 id="attack-goal">Attack goal&lt;/h2>
-&lt;p>The attacker(s) seemed interested in obtaining copies of unpaid invoices from Fleet to our customers.&lt;/p>
-&lt;p>As this seems to have been attempted by a BEC group, we think they likely wanted to obtain unpaid invoices so they could trick our customers into paying an actual invoice into the wrong bank account.&lt;/p>
-&lt;p>Even people well trained against these types of scams could fall to it, especially if the actual invoice they receive is the one they expected all along!&lt;/p>
-&lt;p>To obtain these invoices, the attacker impersonated a salesperson. Salespeople requesting copies of invoices could make sense, as they are often paid commissions or bonuses on sales and might get in touch with clients to make sure invoices are well received.&lt;/p>
-&lt;h2 id="how-it-got-through">How it got through&lt;/h2>
-&lt;p>As we have employee impersonation protection enabled, we were surprised that such a simple malicious email made it through the Gmail filters.&lt;/p>
-&lt;p>The attacker sent the message to a &lt;em>group/mailing list&lt;/em>, not an individual. The email had a valid DKIM signature, as a real email account was used, with only the name spoofed.&lt;/p>
-&lt;p>Once Google Groups processes the email, it forwards it to internal and external recipients. Since Groups is the one sending the message, with a &lt;em>from&lt;/em> that is now in the domain used for Google Workspace, the DKIM signature is valid. Internal recipients receive it without additional filtering, as it is a trusted internal email. External recipients receive it with a very high chance of delivery as the message is authenticated correctly and comes from a domain they interact with regularly.&lt;/p>
-&lt;p>From a UI point of view, the recipient can easily mistake the message for a legitimate one, as the domain name is either replaced with the legitimate domain or gets the mention &amp;ldquo;via legitimatedomain.com&amp;rdquo; added.&lt;/p>
-&lt;p>Our mistake was assuming the message went through the same filters used for regular email. In reality, Google Groups uses different technologies for filtering spam, and the more advanced Gmail features do not apply.&lt;/p>
-&lt;h3 id="email-processing">Email processing&lt;/h3>
-&lt;pre tabindex="0">&lt;code class="language-mermaid" data-lang="mermaid">graph TD;
+async src="//gc.zgo.at/count.js"&gt;&lt;/script&gt;</content></item><item><title>Before Preaching, Stop Punching Yourself</title><link>https://recyclebin.zip/posts/2024-10-04-awareness-month/</link><pubDate>Fri, 04 Oct 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-10-04-awareness-month/</guid><description>&lt;p&gt;&lt;em&gt;Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself"&gt;JupiterOne blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Some seem to love Cyber Security Awareness Month. Of course, at least as many despise it, because it makes no sense to have intense focus for one month and then forget about it for the other 11.&lt;/p&gt;
+&lt;p&gt;Without saying if I love it or if I hate it, I decided to write a set of rules. If any of this is a problem in your organization, you HAVE to fix it before you are allowed to fill up user’s inboxes with more “awareness”.&lt;/p&gt;</description><content>&lt;p&gt;&lt;em&gt;Originally posted on the &lt;a href="https://www.jupiterone.com/blog/marketing-wouldnt-let-me-call-this-before-preaching-stop-punching-yourself"&gt;JupiterOne blog&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Some seem to love Cyber Security Awareness Month. Of course, at least as many despise it, because it makes no sense to have intense focus for one month and then forget about it for the other 11.&lt;/p&gt;
+&lt;p&gt;Without saying if I love it or if I hate it, I decided to write a set of rules. If any of this is a problem in your organization, you HAVE to fix it before you are allowed to fill up user’s inboxes with more “awareness”.&lt;/p&gt;
+&lt;p&gt;Have you recently told someone working in HR to not open attachments in email? Have you told someone to not click things on the &lt;a href="https://x.com/swagitda_/status/1503751776134180873"&gt;thing-clicking machine&lt;/a&gt;?&lt;/p&gt;
+&lt;p&gt;Here are signs you shouldn’t hire some “creatives” to generate “content” to “educate users” this year:&lt;/p&gt;
+&lt;h1 id="your-company-blocks-copypaste-on-a-website-login-form"&gt;Your company blocks copy/paste on a website login form&lt;/h1&gt;
+&lt;p&gt;Are you making any person using a password manager to log in to your service hate computers, your company AND behave less securely by blocking paste for “security reasons” ?&lt;/p&gt;
+&lt;p&gt;Are you driving people to install &lt;a href="https://github.com/jswanner/DontF-WithPaste"&gt;browser extensions&lt;/a&gt; just to deal with the completely irrational behavior your login form exhibits?&lt;/p&gt;
+&lt;p&gt;Why? Do you WANT people to reuse passwords from other sites, making sure their accounts on your service will get compromised, or do you simply want people to use simple passwords that are easier to crack?&lt;/p&gt;
+&lt;p&gt;Did an auditor tell you to do this, and nobody dared argue?&lt;/p&gt;
+&lt;p&gt;Go fix this before you tell any of your employees or customers ANYTHING about cyber security awareness month.&lt;/p&gt;
+&lt;h1 id="password-expiration"&gt;Password expiration&lt;/h1&gt;
+&lt;p&gt;Because you want your helpdesk to suffer, you make passwords expire. Sure, there is absolutely no security benefit to it because people only rotate the last digit in the password, but in 2006, a &lt;a href="https://en.wikipedia.org/wiki/Qualified_Security_Assessor"&gt;QSA&lt;/a&gt; told you to do this every 90 days.&lt;/p&gt;
+&lt;p&gt;NIST started recommending that practice to end years ago. This fall, they’ve made that guidance stronger.&lt;/p&gt;
+&lt;p&gt;If your employees or customers have to rotate passwords at a certain frequency, you are hereby prohibited from celebrating October Cyber Security Awareness Month.&lt;/p&gt;
+&lt;h1 id="no-password-manager-for-employees"&gt;No password manager for employees&lt;/h1&gt;
+&lt;p&gt;Are you really going to send an animated video of poor quality to people, instructing them not to reuse passwords, while simultaneously not providing them with an easy to use password manager?&lt;/p&gt;
+&lt;p&gt;Slow down, Satan!&lt;/p&gt;
+&lt;h1 id="weak-or-no-mfa"&gt;Weak or no MFA&lt;/h1&gt;
+&lt;p&gt;Stop blaming people for leaking credentials when &lt;a href="https://fidoalliance.org/fido2/"&gt;technical solutions&lt;/a&gt; exist. Imagine if cars came with a button that made the airbags pop, and car manufacturers repeatedly told you not to press it. Just REMOVE THE FACE PUNCHING BUTTON!&lt;/p&gt;
+&lt;h1 id="your-hr-departments-sends-emails-indistinguishable-from-phishing"&gt;Your HR departments sends emails indistinguishable from phishing&lt;/h1&gt;
+&lt;p&gt;Explaining to someone what is and is not phishing is very difficult. Most people do not know that email can be sent without authentication. Many of you reading this are already thinking of yelling at me in your heads “But but SPF! DKIM/DMARC! Hasn’t this guy heard of BIMI?”. Alright.&lt;/p&gt;
+&lt;p&gt;But in reality, spam will also come from domains that aren’t the right one. Sure, it’s not exactly the right domain, but it looks like it. Or it’s a completely unrelated domain, with a reply-to that seems to be legit.&lt;/p&gt;
+&lt;p&gt;How do you explain any of this to someone and then expect them not to be confused when the HR department sends out a survey asking for sensitive information, hosted on a free SurveyMonkey page that isn’t on a subdomain of your company? Or when your support team does the same to a customer, using some support SaaS tool that isn’t on your domain?&lt;/p&gt;
+&lt;h1 id="laptops-that-cant-survive-hotel-wi-fi"&gt;Laptops that can’t survive hotel Wi-Fi&lt;/h1&gt;
+&lt;p&gt;VPN VPN VPN VPN VPN VPN VPN. Why do so many people sound like a sponsored Youtube video?&lt;/p&gt;
+&lt;p&gt;If you’re recommending that people use a VPN when using “public Wi-Fi” because you’re afraid of data being sniffed or modified in transit, spend some time &lt;a href="https://chromeenterprise.google/policies/#SSLErrorOverrideAllowed"&gt;hardening browsers&lt;/a&gt; and laptops, and ensure you do not provide any service over unencrypted protocols like POP3 or IMAP without TLS.&lt;/p&gt;
+&lt;p&gt;Once you’re done with that, when you get the urge to yell “VPN” again at a random person using a laptop at Starbucks, read &lt;a href="https://www.cs.umd.edu/~akgul/papers/vpn-ads.pdf"&gt;this&lt;/a&gt; to relax instead.&lt;/p&gt;
+&lt;h1 id="authenticating-callers-at-the-help-desk-with-security-questions"&gt;Authenticating callers at the help desk with security questions&lt;/h1&gt;
+&lt;p&gt;Security questions are just passwords, but worse. Not only are they not safe, they’re not user friendly. How would I remember what I said my favorite dessert is? And if I said “poutine”, then everyone knows anyway.&lt;/p&gt;
+&lt;p&gt;Worse, relying on “private” information like SSNs. Social security numbers for pretty much everyone have been leaked at least once, so why are we using this to authenticate anyone?&lt;/p&gt;
+&lt;p&gt;Instead of having everyone in your company waste an hour looking at videos about not putting passwords on post-it notes, rework your password reset process to use multifactor authentication.&lt;/p&gt;
+&lt;h1 id="next-time-to-celebrate"&gt;Next? Time to celebrate!&lt;/h1&gt;
+&lt;p&gt;If you did get rid of one of these outdated practices, you’re now allowed to celebrate by sharing with your employees and/or customers why you did it, and how they’re now safer AND more productive.&lt;/p&gt;
+&lt;p&gt;You’ve used October Cyber Security Awareness month as an excuse to improve cyber security.&lt;/p&gt;
+&lt;p&gt;Well done!&lt;/p&gt;</content></item><item><title>Managing Apple Intelligence via MDM</title><link>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</link><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2024-09-25-apple-intelligence-mdm/</guid><description>&lt;p&gt;This summer, since WWDC, I was repeatedly asked:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How do I disable Apple Intelligence on our company laptops?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
+The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p&gt;</description><content>&lt;p&gt;This summer, since WWDC, I was repeatedly asked:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;How do I disable Apple Intelligence on our company laptops?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Apple Intelligence didn&amp;rsquo;t exist yet. Not even in the betas, plus, Apple is pretty strict around betas and NDAs.
+The features were clearly going to roll out in stages throughout the year, so my answer was always, “Yeah, you’ll probably be able to control each one via MDM once the new settings drop.”&lt;/p&gt;
+&lt;p&gt;Now, with the release of iOS 18 and macOS 15, we&amp;rsquo;ve got some of those settings to play with.
+Apple Intelligence shows up in iOS 18.1 and macOS 15.1, so you can prepare.&lt;/p&gt;
+&lt;p&gt;As with most settings that make the device less useful, they require a supervised device, so forget doing that on BYOD.&lt;/p&gt;
+&lt;p&gt;The settings are in &lt;a href="https://developer.apple.com/documentation/devicemanagement/restrictions"&gt;restrictions&lt;/a&gt;. By searching for &amp;ldquo;iOS 18 and later&amp;rdquo; on the page, we can find the new settings, most of which are Apple Intelligence related:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;allowGenmoji&lt;/td&gt;
+&lt;td&gt;If false, prohibits creating new Genmoji. Requires a supervised device. Available in iOS 18 and later.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;allowImagePlayground&lt;/td&gt;
+&lt;td&gt;If false, prohibits the use of image generation. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;allowImageWand&lt;/td&gt;
+&lt;td&gt;If false, prohibits the use of Image Wand. Requires a supervised device. Available in iOS 18 and later.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;allowPersonalizedHandwritingResults&lt;/td&gt;
+&lt;td&gt;If false, prevents the system from generating text in the user’s handwriting. Requires a supervised device. Available in iOS 18 and later.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;allowWritingTools&lt;/td&gt;
+&lt;td&gt;If false, disables Apple Intelligence writing tools. Requires a supervised device. Available in iOS 18 and later and macOS 15 and later.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Most people asking me how to disable Apple Intelligence this summer were specifically worried about ChatGPT/OpenAI integration, which has not been released yet.&lt;/p&gt;
+&lt;p&gt;Based on those restrictions, it&amp;rsquo;s safe to assume a similar setting will be added to iOS before the feature is released.&lt;/p&gt;</content></item><item><title>AutoSpill the beans: not THAT big a deal</title><link>https://recyclebin.zip/posts/2023-12-21-autospill/</link><pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-12-21-autospill/</guid><description>&lt;p&gt;Research can be interesting, useful for risk management purposes, helpful to those building software and even entertaining.&lt;/p&gt;
+&lt;p&gt;Sometimes, the usefulness of research is undone by the public discourse on a security issue.&lt;/p&gt;
+&lt;p&gt;In the last few weeks, you’ve heard of “&lt;a href="https://i.blackhat.com/EU-23/Presentations/EU-23-Gangwal-AutoSpill-Zero-Effort-Credential-Stealing.pdf"&gt;AutoSpill&lt;/a&gt;”, a vulnerability affecting multiple password managers on Android.&lt;/p&gt;
+&lt;p&gt;I’ve heard everything about this vulnerability on LinkedIn. The posts are often accompanied by a AI-Generated image of a crying Android baby and broken padlocks.&lt;/p&gt;</description><content>&lt;p&gt;Research can be interesting, useful for risk management purposes, helpful to those building software and even entertaining.&lt;/p&gt;
+&lt;p&gt;Sometimes, the usefulness of research is undone by the public discourse on a security issue.&lt;/p&gt;
+&lt;p&gt;In the last few weeks, you’ve heard of “&lt;a href="https://i.blackhat.com/EU-23/Presentations/EU-23-Gangwal-AutoSpill-Zero-Effort-Credential-Stealing.pdf"&gt;AutoSpill&lt;/a&gt;”, a vulnerability affecting multiple password managers on Android.&lt;/p&gt;
+&lt;p&gt;I’ve heard everything about this vulnerability on LinkedIn. The posts are often accompanied by a AI-Generated image of a crying Android baby and broken padlocks.&lt;/p&gt;
+&lt;p&gt;Quotes ranged from calls to warn everyone about this important vulnerability to “you should never use password manager browser extensions” (paraphrased).&lt;/p&gt;
+&lt;p&gt;When we make these types of claims, as security professionals, we risk scaring people away from a tool that reduces the risk they are exposed to.&lt;/p&gt;
+&lt;p&gt;If a single person stopped using a password manager and reverted to a text file, to using the same password everywhere, to using an “algorithm” in their heads to generate “different” passwords, that person is now less secure due to the discourse of security professionals on social media.&lt;/p&gt;
+&lt;h2 id="the-facts-about-the-vulnerability"&gt;The facts about the vulnerability&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Autofill vulnerabilities aren&amp;rsquo;t new. Yes, they&amp;rsquo;re a risk, but the majority of autofill action happens on legitimate sites, preventing phishing. Drama much?&lt;/li&gt;
+&lt;li&gt;Most password managers ask before spilling the beans. Calm down, it’s not a complete free-for-all.&lt;/li&gt;
+&lt;li&gt;AutoSpill needs a malicious app to work. It&amp;rsquo;s not a web-based 0day in the wild. Walled gardens like App Store or Play Store keep most nasties out.&lt;/li&gt;
+&lt;li&gt;Password managers are patching or have patched this. Fearmongers, please take a seat. By the time you switch to &lt;code&gt;Password123$&lt;/code&gt; or to your “elite brain generated algorithm”, it&amp;rsquo;ll be a non-issue.&lt;/li&gt;
+&lt;/ol&gt;</content></item><item><title>Security checklist for families using Apple devices</title><link>https://recyclebin.zip/posts/2023-12-22-apple-family/</link><pubDate>Fri, 22 Dec 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-12-22-apple-family/</guid><description>&lt;h1 id="security-checklist-for-families-using-apple-devices"&gt;Security checklist for families using Apple devices&lt;/h1&gt;
+&lt;p&gt;If many people in your family are on the Apple ecosystem, here are a few things worth checking while you’re going to be in the same physical location over the holidays.&lt;/p&gt;
+&lt;p&gt;Ensure they have enough iCloud data and recent backups, then, enable automatic updates, and nudge them into updating (bring a couple chargers!), as these features are recent.&lt;/p&gt;
+&lt;p&gt;If they don’t have any iCloud storage, consider rolling them into your iCloud “Family” to share paid storage, it’s cheap and sometimes worth it versus trying to convince people to pay for backups 😅.&lt;/p&gt;</description><content>&lt;h1 id="security-checklist-for-families-using-apple-devices"&gt;Security checklist for families using Apple devices&lt;/h1&gt;
+&lt;p&gt;If many people in your family are on the Apple ecosystem, here are a few things worth checking while you’re going to be in the same physical location over the holidays.&lt;/p&gt;
+&lt;p&gt;Ensure they have enough iCloud data and recent backups, then, enable automatic updates, and nudge them into updating (bring a couple chargers!), as these features are recent.&lt;/p&gt;
+&lt;p&gt;If they don’t have any iCloud storage, consider rolling them into your iCloud “Family” to share paid storage, it’s cheap and sometimes worth it versus trying to convince people to pay for backups 😅.&lt;/p&gt;
+&lt;p&gt;Then, go into iCloud Settings/Security and review the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Enable iCloud &lt;a href="https://developer.apple.com/support/authentication/"&gt;Two-Factor Authentication&lt;/a&gt; (2FA) if they don’t have it. No need to go crazy with FIDO keys unless they’re security nerds or at-risk targets.&lt;/li&gt;
+&lt;li&gt;Account Recovery: Make sure everyone has at least one “&lt;a href="https://support.apple.com/en-us/HT212513"&gt;Recovery Contact&lt;/a&gt;” to help them back into their Apple IDs if something happens.&lt;/li&gt;
+&lt;li&gt;Legacy Contact: Do the same for “&lt;a href="https://support.apple.com/en-us/102631"&gt;Legacy Contacts&lt;/a&gt;”, which can be used to recover access to someone’s iCloud data after they pass. It’s less awkward to do this while reviewing a bunch of security settings than to bring it up on its own randomly!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As a bonus, if you’ve got security enthusiasts around you who have up to date devices on their Apple accounts, it’s a good time to enable &lt;a href="https://support.apple.com/en-us/HT213465"&gt;iMessage Contact Key Verification&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Most people don’t need it, but if they’re interested in security, it’s a nice feature to demo while in physical proximity.&lt;/p&gt;</content></item><item><title>Using HomeKit Devices Across VLANs and Subnets</title><link>https://recyclebin.zip/posts/medium-posts-homekit-vlans/</link><pubDate>Mon, 29 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/medium-posts-homekit-vlans/</guid><description>&lt;p&gt;This article was originally posted on &lt;a href="https://medium.com/@gepeto42/using-homekit-devices-across-vlans-and-subnets-aa5ae1024939"&gt;Medium&lt;/a&gt;. As I am removing my Medium articles, this will be the archive for this content.&lt;/p&gt;
+&lt;p&gt;Originally written on September 8, 2017.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;TL;DR Version: Make sure your iOS devices can connect to the HomeKit Devices on port 80 and 443, and replicate mDNS from VLAN/Subnet to VLAN/Subnet with Avahi.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;So, you’ve setup multiple VLANs and SSIDs at home, you’re keeping all those Internet Connected toasters away from the LAN where your crown jewels sit.&lt;/p&gt;</description><content>&lt;p&gt;This article was originally posted on &lt;a href="https://medium.com/@gepeto42/using-homekit-devices-across-vlans-and-subnets-aa5ae1024939"&gt;Medium&lt;/a&gt;. As I am removing my Medium articles, this will be the archive for this content.&lt;/p&gt;
+&lt;p&gt;Originally written on September 8, 2017.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;TL;DR Version: Make sure your iOS devices can connect to the HomeKit Devices on port 80 and 443, and replicate mDNS from VLAN/Subnet to VLAN/Subnet with Avahi.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;So, you’ve setup multiple VLANs and SSIDs at home, you’re keeping all those Internet Connected toasters away from the LAN where your crown jewels sit.&lt;/p&gt;
+&lt;p&gt;Good! Except, woops, a ton of stuff is broken?&lt;/p&gt;
+&lt;p&gt;HomeKit uses the &lt;a href="https://developer.apple.com/support/homekit-accessory-protocol/"&gt;HAP Protocol&lt;/a&gt;, which actually uses peer-to-peer connectivity for really fast action when you try to perform actions. If your device is unable to reach the HomeKit device, it will, through iCloud, try to perform the HomeKit action through your AppleTV.&lt;/p&gt;
+&lt;p&gt;If your AppleTV is unable to reach the HomeKit device, the request will fail.&lt;/p&gt;
+&lt;p&gt;If your AppleTV is in the right subnet and DOES reach it, it will work, however, it will be slower than if it had worked directly from your device. And believe me, 500ms of lag when trying to turn on the lights can be a significant pain.&lt;/p&gt;
+&lt;p&gt;Here is how to get it working almost as if it was on the same network.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: This is not the most restrictive configuration possible. I am sure you can lock it down more, especially if everything you have has known hostnames or assigned IPs that do not change.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allow your main LAN to connect to port 80 and 443 on HomeKit devices. You can do this via IP to IP + port rules, or, if you do not mind your main network reaching the IoT network, simply allow 80 and 443 from Main to IoT LANs. You can make this more restrictive by only allowing the static or reserved IPs of devices you use with HomeKit. Be sure to include your AppleTV or iPad so your schedules work when you’re away.&lt;/li&gt;
+&lt;li&gt;Disable Guest Isolation on your IoT SSID while you pair the devices (the pairing process seems to require p2p connectivity for some devices, and in any case, some apps will force you to send Wi-Fi settings from your phone, preventing you from being on the main SSID while you do this).&lt;/li&gt;
+&lt;li&gt;Join your IoT SSID with your phone.&lt;/li&gt;
+&lt;li&gt;Add the device to HomeKit. I tested this with iDevices devices (Ferrari LaFerrari anyone?). Their process for adding devices is very brittle, and I had a lot of issues, and had to try again many times. I had to do that the first time I set them up on a single Wi-Fi and VLAN however.&lt;/li&gt;
+&lt;li&gt;Install &lt;a href="https://avahi.org/"&gt;Avahi&lt;/a&gt; on your Firewall, or on any device that sees both the Main and the IoT VLAN. It can be made to work on many devices, but of course if you are using pfSense it is available as a &lt;a href="https://doc.pfsense.org/index.php/Avahi_package"&gt;package&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Enable Avahi, and make sure it is listening on your IoT and your Main interface (deny it everywhere else). This is where you could potentially lock this down more: create custom rules and settings so it only works from specific IoT devices. In my case, it wasn’t worth it.&lt;/li&gt;
+&lt;li&gt;Reconnect your phone to your main SSID.&lt;/li&gt;
+&lt;li&gt;Turn the lights on and off and on and off and on and off. And on and off and on and off. &lt;strong&gt;It works!&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Re-enable guest isolation on your IoT SSID&lt;/strong&gt;. Do not forget this step, you don’t want your toaster to hack your fridge do you? &lt;em&gt;Note: Some APs are very hardcore with their guest isolation, and will block traffic from/to any RFC1918 address. If enabling guest isolation breaks your previously working setup, look to see if you can create custom ACLs on your AP. If not, I would recommend creating an SSID only for HomeKit devices, and leaving guest isolation disabled. In some cases, you will need to whitelist your Main LAN from it completely, but this should be filtered by your firewall anyway. On some, such as Ubiquiti UniFi gear, you need to allow the guest isolated SSID to talk to 224.0.0.251 for mDNS.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;</content></item><item><title>Scams targeting Google Groups</title><link>https://recyclebin.zip/posts/2023-05-12-google-groups/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-05-12-google-groups/</guid><description>&lt;h1 id="scams-targeting-google-groups"&gt;Scams targeting Google Groups&lt;/h1&gt;
+&lt;p&gt;This article was originally published on the &lt;a href="https://fleetdm.com/blog/scams-targeting-google-groups"&gt;Fleet blog&lt;/a&gt;. Minor style changes were applied.&lt;/p&gt;
+&lt;p&gt;The Fleet handbook contains detailed information on how we have configured Google Workspace &lt;a href="https://fleetdm.com/handbook/security#email-security"&gt;to block spam and phishing&lt;/a&gt;. Gmail has some exciting email security features, such as flagging or blocking mail from people with the same name as employees or quarantining it.&lt;/p&gt;
+&lt;p&gt;These features are great for protecting from business email compromise (BEC) and other types of social engineering attacks.&lt;/p&gt;</description><content>&lt;h1 id="scams-targeting-google-groups"&gt;Scams targeting Google Groups&lt;/h1&gt;
+&lt;p&gt;This article was originally published on the &lt;a href="https://fleetdm.com/blog/scams-targeting-google-groups"&gt;Fleet blog&lt;/a&gt;. Minor style changes were applied.&lt;/p&gt;
+&lt;p&gt;The Fleet handbook contains detailed information on how we have configured Google Workspace &lt;a href="https://fleetdm.com/handbook/security#email-security"&gt;to block spam and phishing&lt;/a&gt;. Gmail has some exciting email security features, such as flagging or blocking mail from people with the same name as employees or quarantining it.&lt;/p&gt;
+&lt;p&gt;These features are great for protecting from business email compromise (BEC) and other types of social engineering attacks.&lt;/p&gt;
+&lt;p&gt;With this configuration, many of the less targeted, basic attempts at BEC get filtered, which is why an attempt we received a few weeks ago caught our attention.&lt;/p&gt;
+&lt;p&gt;Google Groups mailing lists have much weaker protection, and the Gmail security settings could create a false sense of security.&lt;/p&gt;
+&lt;h2 id="attack-goal"&gt;Attack goal&lt;/h2&gt;
+&lt;p&gt;The attacker(s) seemed interested in obtaining copies of unpaid invoices from Fleet to our customers.&lt;/p&gt;
+&lt;p&gt;As this seems to have been attempted by a BEC group, we think they likely wanted to obtain unpaid invoices so they could trick our customers into paying an actual invoice into the wrong bank account.&lt;/p&gt;
+&lt;p&gt;Even people well trained against these types of scams could fall to it, especially if the actual invoice they receive is the one they expected all along!&lt;/p&gt;
+&lt;p&gt;To obtain these invoices, the attacker impersonated a salesperson. Salespeople requesting copies of invoices could make sense, as they are often paid commissions or bonuses on sales and might get in touch with clients to make sure invoices are well received.&lt;/p&gt;
+&lt;h2 id="how-it-got-through"&gt;How it got through&lt;/h2&gt;
+&lt;p&gt;As we have employee impersonation protection enabled, we were surprised that such a simple malicious email made it through the Gmail filters.&lt;/p&gt;
+&lt;p&gt;The attacker sent the message to a &lt;em&gt;group/mailing list&lt;/em&gt;, not an individual. The email had a valid DKIM signature, as a real email account was used, with only the name spoofed.&lt;/p&gt;
+&lt;p&gt;Once Google Groups processes the email, it forwards it to internal and external recipients. Since Groups is the one sending the message, with a &lt;em&gt;from&lt;/em&gt; that is now in the domain used for Google Workspace, the DKIM signature is valid. Internal recipients receive it without additional filtering, as it is a trusted internal email. External recipients receive it with a very high chance of delivery as the message is authenticated correctly and comes from a domain they interact with regularly.&lt;/p&gt;
+&lt;p&gt;From a UI point of view, the recipient can easily mistake the message for a legitimate one, as the domain name is either replaced with the legitimate domain or gets the mention &amp;ldquo;via legitimatedomain.com&amp;rdquo; added.&lt;/p&gt;
+&lt;p&gt;Our mistake was assuming the message went through the same filters used for regular email. In reality, Google Groups uses different technologies for filtering spam, and the more advanced Gmail features do not apply.&lt;/p&gt;
+&lt;h3 id="email-processing"&gt;Email processing&lt;/h3&gt;
+&lt;pre class="mermaid"&gt;graph TD;
 id1[Attacker]
 id2[Malicious email]
 id3[Group address]
@@ -407,111 +552,112 @@ id5[External recipients]
 id6[Gmail antispam/phishing]
 id7[Google group weaker antispam/phishing]
 id8[Email displayed with a group email address and employee name]
-id1--Creates real email account with employee name--&amp;gt;id2
-id2--SPF and DKIM succeed--&amp;gt;id7
-id7--Email passes--&amp;gt;id3
-id3--Forwarded--&amp;gt;id6
-id6--Passes as it is now an internal email--&amp;gt;id4
-id6--Forwarded externally with new signature--&amp;gt;id5
-id5--&amp;gt;id8
-id4--&amp;gt;id8
-&lt;/code>&lt;/pre>&lt;p>We contacted Google to ask why this message made it through filters. They confirmed that the filters are different on Groups vs Gmail (emphasis ours) in a response to our issue:&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>We then asked if any of the advanced spam filter rules from Gmail worked in Google Groups:&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>In this case, the attacker didn&amp;rsquo;t spoof our domain, so enabling this feature did not help.&lt;/p>
-&lt;p>Two weeks after this happened, we saw a &lt;a href="https://twitter.com/Centurion/status/1549780307544379392?s=20&amp;amp;t=aehcFzyPfH_56fCLGpRddA">Tweet&lt;/a> by Chris Long at Material security, who had written a &lt;a href="https://material.security/blog/identify-google-groups-vulnerable-to-spam-and-spoofing">blog post&lt;/a> on this topic.&lt;/p>
-&lt;p>Chris and Material tested and realized that Google Groups delivered five out of six types of spoofed emails while Gmail blocked all six. They also figured out why the original email was replaced with the mailing list email, as Google Groups replaced it when the DMARC policy caused the delivery to fail.&lt;/p>
-&lt;p>We performed the same tests at Fleet, using &lt;a href="https://emailspooftest.com/">emailspooftest&lt;/a>. Our results were slightly different, but we successfully sent two very suspicious email messages to a mailing list. When we sent the same type of email to an individual, Gmail blocked each attempt.&lt;/p>
-&lt;h2 id="how-we-noticed-and-stopped-the-attack">How we noticed and stopped the attack&lt;/h2>
-&lt;p>At Fleet, we have excellent employees and contractors with amazing eyes for detail. We share information about potential scams, including phishing messages, over Slack, so the entire company is always aware of the suspicious stuff we see.&lt;/p>
-&lt;p>The person who received the email found it, if not necessarily suspicious, at least out of the ordinary. They contacted someone else to ask if that type of request was normal. This second person confirmed that it was not a genuine request and that, in any case, unpaid invoices should never be shared like this, even if the request came from an actual employee.&lt;/p>
-&lt;p>We communicate internally almost exclusively using Slack. Unlike email, impersonating someone on Slack would require compromising accounts configured with Two-Factor Authentication, making it a much more appropriate channel to discuss anything sensitive.&lt;/p>
-&lt;h2 id="recommendations">Recommendations&lt;/h2>
-&lt;ol>
-&lt;li>Warn and train all employees to be even more careful with mail sent to a mailing list, specifically that if an email is sent &amp;ldquo;via&amp;rdquo; your domain, it has a high probability of being spoofed.&lt;/li>
-&lt;li>Use a tool like &lt;a href="https://emailspooftest.com/">emailspooftest&lt;/a> as recommended by Material Security to test your filters. Try a regular user, then a group. Adjust your assumptions.&lt;/li>
-&lt;li>Limit the number of Google Groups that can receive external emails.&lt;/li>
-&lt;li>Limit the number of internal users that can send emails &amp;ldquo;on behalf&amp;rdquo; of a group, to prevent legitimate emails from being sent &amp;ldquo;via&amp;rdquo; the group and makeing people accustomed to seeing them.&lt;/li>
-&lt;li>Avoid using common/obvious names for mailing lists.&lt;/li>
-&lt;li>Apply Material Security&amp;rsquo;s &lt;a href="https://material.security/blog/identify-google-groups-vulnerable-to-spam-and-spoofing">recommendation&lt;/a> to flag unauthenticated emails to groups.&lt;/li>
-&lt;li>Train your accounting teams to never respond to such requests via email but to contact individuals through a safer way, such as Slack.&lt;/li>
-&lt;li>Train your accounting teams to share files using services such as Google Drive, with explicit sharing to other employees within the domain. That way, even if someone agrees to give our fake salesperson access to invoices, the person who will get access is the actual employee.&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Special request&lt;/strong>: If you use Google Workspace with Groups for mailing lists, please perform the &lt;a href="https://emailspooftest.com/">emailspooftest&lt;/a> tests and open a support case with Google asking them to get Groups protection on par with Gmail. Without that happening, all the security we apply to individual accounts is moot unless you somehow have an entire company that does not need any mailing lists!&lt;/p>
-&lt;p>With the BEC cases explosion, we hope Google introduces more advanced spam filtering to Google Groups. We should not have to consider running email through a generic standard Gmail account and forwarding it from there instead of using Google Groups!&lt;/p></content></item><item><title>Securing bank accounts from business email compromise</title><link>https://recyclebin.zip/posts/2023-05-12-bank-security/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-05-12-bank-security/</guid><description>&lt;p>This article was originally published on the &lt;a href="https://fleetdm.com/blog/securing-bank-accounts-from-business-email-compromise/">Fleet blog&lt;/a>. Minor style changes were applied.&lt;/p>
-&lt;h1 id="securing-bank-accounts-from-business-email-compromise">Securing bank accounts from business email compromise&lt;/h1>
-&lt;p>According to the &lt;a href="https://www.ic3.gov/Media/Y2022/PSA220504">FBI&lt;/a>, business email compromise (BEC) attacks are increasing in popularity yearly, costing organizations over 43 billion dollars in losses between 2016 and 2021.&lt;/p>
-&lt;p>As BEC is a form of social engineering, we often think education is the only way to reduce the odds of getting compromised.&lt;/p>
-&lt;p>Security teams often focus on protecting IT assets only, but what could be more damaging to your company than having its bank account emptied fraudulently?&lt;/p></description><content>&lt;p>This article was originally published on the &lt;a href="https://fleetdm.com/blog/securing-bank-accounts-from-business-email-compromise/">Fleet blog&lt;/a>. Minor style changes were applied.&lt;/p>
-&lt;h1 id="securing-bank-accounts-from-business-email-compromise">Securing bank accounts from business email compromise&lt;/h1>
-&lt;p>According to the &lt;a href="https://www.ic3.gov/Media/Y2022/PSA220504">FBI&lt;/a>, business email compromise (BEC) attacks are increasing in popularity yearly, costing organizations over 43 billion dollars in losses between 2016 and 2021.&lt;/p>
-&lt;p>As BEC is a form of social engineering, we often think education is the only way to reduce the odds of getting compromised.&lt;/p>
-&lt;p>Security teams often focus on protecting IT assets only, but what could be more damaging to your company than having its bank account emptied fraudulently?&lt;/p>
-&lt;p>Since BEC typically targets one straightforward thing, money, there are controls we can implement to reduce the risk significantly. The parameters suggested in this post are those we found the most useful through our research. Unlike previous posts in this series, we cannot be as specific about how to enable them as every bank is different.&lt;/p>
-&lt;h2 id="email-configuration">Email configuration&lt;/h2>
-&lt;p>While good email hygiene can&amp;rsquo;t stop BEC, it can at least reduce the number of fraudulent emails that make it through and force criminals to work harder.&lt;/p>
-&lt;ol>
-&lt;li>Require secure two-factor authentication (2FA) to access email, such as &lt;a href="https://fidoalliance.org/specs/u2f-specs-master/fido-u2f-overview.html">FIDO U2F&lt;/a> security keys. Using U2F keys makes the credentials phishing-resistant, lowering the risk of malicious access to your email accounts from being used to launch an internal BEC attempt.&lt;/li>
-&lt;li>Configure email security features such as &lt;a href="https://support.google.com/a/answer/2466580?product_name=UnuFlow&amp;amp;hl=en&amp;amp;visit_id=637919491839685136-2075570827&amp;amp;rd=1&amp;amp;src=supportwidget0&amp;amp;hl=en">SPF, DMARC, and DKIM&lt;/a>. These help make it harder to impersonate your domain name in an email.&lt;/li>
-&lt;li>Configure spam filters to protect your organization from people impersonating employees from other domain names. On Google Workspace/Gmail, this setting is called &lt;strong>Protect against spoofing of employee names&lt;/strong>, and you should enable it along with &lt;strong>Protect against inbound emails spoofing your domain&lt;/strong>.&lt;/li>
-&lt;/ol>
-&lt;p>You can find detailed instructions on configuring Google Workspace in the &lt;a href="https://fleetdm.com/handbook/security#email-authentication">Fleet handbook&lt;/a>.&lt;/p>
-&lt;h2 id="online-banking-configuration">Online banking configuration&lt;/h2>
-&lt;p>The best email configuration ever is not enough to protect from BEC and other types of social engineering attacks. Something will always slip by, and we must assume that even well-trained employees will fall for a good enough attempt.&lt;/p>
-&lt;p>If you think you can&amp;rsquo;t fall victim to these emails, you probably have not received one that was sufficiently well-targeted and delivered at precisely the right time.&lt;/p>
-&lt;p>As defenders, we often say that while we must always be perfect, attackers only need to succeed once. As &lt;a href="https://www.dragos.com/blog/industry-news/the-myth-of-the-adversary-advantage/">Joe Slowik&lt;/a> explained in this excellent blog post a couple of years ago, that is seldom true. We defenders have the high ground, but we often fail to leverage it.&lt;/p>
-&lt;p>Since we know the attackers are looking for money, instead of trying to train people to be perfect at spotting scams, which is impossible, let&amp;rsquo;s secure the cash!&lt;/p>
-&lt;h3 id="authentication">Authentication&lt;/h3>
-&lt;p>If someone can break into your bank accounts directly, they won&amp;rsquo;t need to come up with a convincing email or text message to convince you to move money. It is therefore critical to enable the most advanced security features your bank offers. Unfortunately, in North America, many banks fail to offer any 2FA or only offer SMS-based 2FA, which is the weakest form of 2FA but is still better than nothing.&lt;/p>
-&lt;ol start="0">
-&lt;li>Keep the number of people with online banking access as low as possible.&lt;/li>
-&lt;li>If available, enable 2FA. FIDO U2F, although very rare right now with banks, is preferable. Otherwise, use app-based 2FA. As a last resort, use SMS 2FA.&lt;/li>
-&lt;li>If a setting exists to make 2FA prompt either &lt;em>always&lt;/em> or &lt;em>when the risk level is high&lt;/em>, set it to &lt;em>always&lt;/em>. Weaker options leave the doors wide open for someone to bypass 2FA.&lt;/li>
-&lt;/ol>
-&lt;p>Some banks allow organizational-level controls, but most do not. You might have to talk to everyone with access to your online banking and check their 2FA configuration, but if you don&amp;rsquo;t have more than a handful, it&amp;rsquo;s worth doing.&lt;/p>
-&lt;h3 id="dual-control-for-configuration">Dual control for configuration&lt;/h3>
-&lt;p>Many settings we recommend configuring require high privilege access to online banking. We have to assume that a well-informed attacker would be able to trick someone into changing those.&lt;/p>
-&lt;p>By enabling dual control, one administrator can make a change, but it will not be active until a second one approves it. This makes it much harder for social engineering attacks to succeed and protects these settings if a single account is compromised.&lt;/p>
-&lt;h3 id="alerting">Alerting&lt;/h3>
-&lt;p>Alerts are often triggered when something bad has already happened, but sometimes, there might still be time to fix things before they worsen.&lt;/p>
-&lt;p>Depending on your bank, you might have various alerts you can configure. For example, &lt;a href="https://www.svb.com/private-bank/help/resources/digital-banking/managing-digital-banking-alerts">SVB&lt;/a> &lt;del>has&lt;/del> had security alerts as well as transaction alerts.&lt;/p>
-&lt;p>If possible, enable at least the following:&lt;/p>
-&lt;ol>
-&lt;li>Alert when a new recipient is added&lt;/li>
-&lt;li>Alert when a wire transfer is created (domestic or international)&lt;/li>
-&lt;li>Alert when an external transfer is created&lt;/li>
-&lt;li>Alert when an address or other contact information is changed&lt;/li>
-&lt;li>Alert on any transaction above a certain threshold, such as $10,000&lt;/li>
-&lt;/ol>
-&lt;p>Banks typically deliver these alerts via email, which is not ideal for rapid awareness. To improve that, create an email address never used anywhere else specifically for these alerts. You&amp;rsquo;ll then be able to integrate that mailbox to other tools, like Slack, by using a &lt;a href="https://slack.com/help/articles/206819278-Send-emails-to-Slack#:~:text=To%20send%20an%20email%20to,see%20your%20email%20in%20Slack.">forwarding address&lt;/a>.
-With this configuration, you can deliver these alerts in your administrative or accounting channel, where everyone can see them, create a thread and ask questions.&lt;/p>
-&lt;p>On top of email alerts, inform your accounting department that they should pay attention to push notifications from your online banking application. If you can keep the amount of &amp;ldquo;false positives&amp;rdquo; down and your accounting and finance are all in the same time zone, have a rotation for who will let the app notify them even when in do not disturb mode.&lt;/p>
-&lt;h3 id="dual-and-triple-approval">Dual and triple approval&lt;/h3>
-&lt;p>Most business banks allow customers to set thresholds above which the system will require multiple approvals.
-A threshold of $10,000 before a second approval is needed makes sure that if an attacker compromised a single person, they could only send away money in $10,000 batches. Alerting remains essential as the total cost can grow pretty quickly, but it is much safer than allowing a single person to move millions of dollars.&lt;/p>
-&lt;p>Consider requiring three approvals for substantial transactions, as long as your team is large enough to accommodate this even when people are on vacation or unavailable for any other reason.&lt;/p>
-&lt;h3 id="ach-filters">ACH filters&lt;/h3>
-&lt;p>ACH stands for Automated Clearing House, a network used for direct payments, especially in the US. If your company is in the US and deals with US vendors, you probably send most of your payments with ACH.&lt;/p>
-&lt;p>Many banks offer ACH filters on business accounts. These filters work like many security controls, using one of two main methods:&lt;/p>
-&lt;ul>
-&lt;li>In deny list mode, where you provide criteria to deny payments&lt;/li>
-&lt;li>In allow list mode, where you give criteria to allow payments&lt;/li>
-&lt;/ul>
-&lt;p>Allow listing is safer but requires more work to implement. Some banks allow combinations of vendors and amounts, while others only allow lists of vendors.&lt;/p>
-&lt;p>Before implementing ACH filters, obtain a list of all ACH transfers made in the last 18 months. Identify the vendors you have that are still active, the average amount you pay them, plus a buffer to cover increases, and then provide this list to your bank to enable ACH filtering in allow list mode. Have every other payment generate an &lt;strong>exception&lt;/strong> that will require manual intervention.&lt;/p>
-&lt;p>That way, it will be much harder for a single person to send a large amount of money to an unauthorized vendor, and accidentally sending large transfers to legit vendors will be blocked.&lt;/p>
-&lt;h3 id="training">Training&lt;/h3>
-&lt;p>To protect against BEC, we will always need to train people. No matter what technical controls are in place, by using urgency and well-crafted pretexts, criminals will always find a way to trick people into acting against the company&amp;rsquo;s best interests.&lt;/p>
-&lt;p>If you require advanced training before implementing these basic controls, you fail your employees by not providing a system and processes with essential protection. Security teams and organizations must design and configure systems where they are reasonably safe before putting the burden of security on the end-users. Of course, security is everyone&amp;rsquo;s responsibility, but how would you feel if your security team reminded you not to type your password on phishing websites before they had implemented 2FA for remote access?&lt;/p>
-&lt;h2 id="checklist">Checklist&lt;/h2>
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Access to email requires 2FA&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Phishing and spam filters are configured with strict settings to prevent user and domain spoofing&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Access to online banking requires 2FA&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Configuration changes require dual control&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Alerting is enabled&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Money transfers require a second or third approval with sensible thresholds&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> ACH filtering is in place in allow list mode&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> All employees with access to online banking have received BEC training&lt;/li>
-&lt;/ul></content></item></channel></rss>
+id1--Creates real email account with employee name--&gt;id2
+id2--SPF and DKIM succeed--&gt;id7
+id7--Email passes--&gt;id3
+id3--Forwarded--&gt;id6
+id6--Passes as it is now an internal email--&gt;id4
+id6--Forwarded externally with new signature--&gt;id5
+id5--&gt;id8
+id4--&gt;id8
+&lt;/pre&gt;
+&lt;p&gt;We contacted Google to ask why this message made it through filters. They confirmed that the filters are different on Groups vs Gmail (emphasis ours) in a response to our issue:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;We then asked if any of the advanced spam filter rules from Gmail worked in Google Groups:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;In this case, the attacker didn&amp;rsquo;t spoof our domain, so enabling this feature did not help.&lt;/p&gt;
+&lt;p&gt;Two weeks after this happened, we saw a &lt;a href="https://twitter.com/Centurion/status/1549780307544379392?s=20&amp;amp;t=aehcFzyPfH_56fCLGpRddA"&gt;Tweet&lt;/a&gt; by Chris Long at Material security, who had written a &lt;a href="https://material.security/blog/identify-google-groups-vulnerable-to-spam-and-spoofing"&gt;blog post&lt;/a&gt; on this topic.&lt;/p&gt;
+&lt;p&gt;Chris and Material tested and realized that Google Groups delivered five out of six types of spoofed emails while Gmail blocked all six. They also figured out why the original email was replaced with the mailing list email, as Google Groups replaced it when the DMARC policy caused the delivery to fail.&lt;/p&gt;
+&lt;p&gt;We performed the same tests at Fleet, using &lt;a href="https://emailspooftest.com/"&gt;emailspooftest&lt;/a&gt;. Our results were slightly different, but we successfully sent two very suspicious email messages to a mailing list. When we sent the same type of email to an individual, Gmail blocked each attempt.&lt;/p&gt;
+&lt;h2 id="how-we-noticed-and-stopped-the-attack"&gt;How we noticed and stopped the attack&lt;/h2&gt;
+&lt;p&gt;At Fleet, we have excellent employees and contractors with amazing eyes for detail. We share information about potential scams, including phishing messages, over Slack, so the entire company is always aware of the suspicious stuff we see.&lt;/p&gt;
+&lt;p&gt;The person who received the email found it, if not necessarily suspicious, at least out of the ordinary. They contacted someone else to ask if that type of request was normal. This second person confirmed that it was not a genuine request and that, in any case, unpaid invoices should never be shared like this, even if the request came from an actual employee.&lt;/p&gt;
+&lt;p&gt;We communicate internally almost exclusively using Slack. Unlike email, impersonating someone on Slack would require compromising accounts configured with Two-Factor Authentication, making it a much more appropriate channel to discuss anything sensitive.&lt;/p&gt;
+&lt;h2 id="recommendations"&gt;Recommendations&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Warn and train all employees to be even more careful with mail sent to a mailing list, specifically that if an email is sent &amp;ldquo;via&amp;rdquo; your domain, it has a high probability of being spoofed.&lt;/li&gt;
+&lt;li&gt;Use a tool like &lt;a href="https://emailspooftest.com/"&gt;emailspooftest&lt;/a&gt; as recommended by Material Security to test your filters. Try a regular user, then a group. Adjust your assumptions.&lt;/li&gt;
+&lt;li&gt;Limit the number of Google Groups that can receive external emails.&lt;/li&gt;
+&lt;li&gt;Limit the number of internal users that can send emails &amp;ldquo;on behalf&amp;rdquo; of a group, to prevent legitimate emails from being sent &amp;ldquo;via&amp;rdquo; the group and makeing people accustomed to seeing them.&lt;/li&gt;
+&lt;li&gt;Avoid using common/obvious names for mailing lists.&lt;/li&gt;
+&lt;li&gt;Apply Material Security&amp;rsquo;s &lt;a href="https://material.security/blog/identify-google-groups-vulnerable-to-spam-and-spoofing"&gt;recommendation&lt;/a&gt; to flag unauthenticated emails to groups.&lt;/li&gt;
+&lt;li&gt;Train your accounting teams to never respond to such requests via email but to contact individuals through a safer way, such as Slack.&lt;/li&gt;
+&lt;li&gt;Train your accounting teams to share files using services such as Google Drive, with explicit sharing to other employees within the domain. That way, even if someone agrees to give our fake salesperson access to invoices, the person who will get access is the actual employee.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Special request&lt;/strong&gt;: If you use Google Workspace with Groups for mailing lists, please perform the &lt;a href="https://emailspooftest.com/"&gt;emailspooftest&lt;/a&gt; tests and open a support case with Google asking them to get Groups protection on par with Gmail. Without that happening, all the security we apply to individual accounts is moot unless you somehow have an entire company that does not need any mailing lists!&lt;/p&gt;
+&lt;p&gt;With the BEC cases explosion, we hope Google introduces more advanced spam filtering to Google Groups. We should not have to consider running email through a generic standard Gmail account and forwarding it from there instead of using Google Groups!&lt;/p&gt;</content></item><item><title>Securing bank accounts from business email compromise</title><link>https://recyclebin.zip/posts/2023-05-12-bank-security/</link><pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate><guid>https://recyclebin.zip/posts/2023-05-12-bank-security/</guid><description>&lt;p&gt;This article was originally published on the &lt;a href="https://fleetdm.com/blog/securing-bank-accounts-from-business-email-compromise/"&gt;Fleet blog&lt;/a&gt;. Minor style changes were applied.&lt;/p&gt;
+&lt;h1 id="securing-bank-accounts-from-business-email-compromise"&gt;Securing bank accounts from business email compromise&lt;/h1&gt;
+&lt;p&gt;According to the &lt;a href="https://www.ic3.gov/Media/Y2022/PSA220504"&gt;FBI&lt;/a&gt;, business email compromise (BEC) attacks are increasing in popularity yearly, costing organizations over 43 billion dollars in losses between 2016 and 2021.&lt;/p&gt;
+&lt;p&gt;As BEC is a form of social engineering, we often think education is the only way to reduce the odds of getting compromised.&lt;/p&gt;
+&lt;p&gt;Security teams often focus on protecting IT assets only, but what could be more damaging to your company than having its bank account emptied fraudulently?&lt;/p&gt;</description><content>&lt;p&gt;This article was originally published on the &lt;a href="https://fleetdm.com/blog/securing-bank-accounts-from-business-email-compromise/"&gt;Fleet blog&lt;/a&gt;. Minor style changes were applied.&lt;/p&gt;
+&lt;h1 id="securing-bank-accounts-from-business-email-compromise"&gt;Securing bank accounts from business email compromise&lt;/h1&gt;
+&lt;p&gt;According to the &lt;a href="https://www.ic3.gov/Media/Y2022/PSA220504"&gt;FBI&lt;/a&gt;, business email compromise (BEC) attacks are increasing in popularity yearly, costing organizations over 43 billion dollars in losses between 2016 and 2021.&lt;/p&gt;
+&lt;p&gt;As BEC is a form of social engineering, we often think education is the only way to reduce the odds of getting compromised.&lt;/p&gt;
+&lt;p&gt;Security teams often focus on protecting IT assets only, but what could be more damaging to your company than having its bank account emptied fraudulently?&lt;/p&gt;
+&lt;p&gt;Since BEC typically targets one straightforward thing, money, there are controls we can implement to reduce the risk significantly. The parameters suggested in this post are those we found the most useful through our research. Unlike previous posts in this series, we cannot be as specific about how to enable them as every bank is different.&lt;/p&gt;
+&lt;h2 id="email-configuration"&gt;Email configuration&lt;/h2&gt;
+&lt;p&gt;While good email hygiene can&amp;rsquo;t stop BEC, it can at least reduce the number of fraudulent emails that make it through and force criminals to work harder.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Require secure two-factor authentication (2FA) to access email, such as &lt;a href="https://fidoalliance.org/specs/u2f-specs-master/fido-u2f-overview.html"&gt;FIDO U2F&lt;/a&gt; security keys. Using U2F keys makes the credentials phishing-resistant, lowering the risk of malicious access to your email accounts from being used to launch an internal BEC attempt.&lt;/li&gt;
+&lt;li&gt;Configure email security features such as &lt;a href="https://support.google.com/a/answer/2466580?product_name=UnuFlow&amp;amp;hl=en&amp;amp;visit_id=637919491839685136-2075570827&amp;amp;rd=1&amp;amp;src=supportwidget0&amp;amp;hl=en"&gt;SPF, DMARC, and DKIM&lt;/a&gt;. These help make it harder to impersonate your domain name in an email.&lt;/li&gt;
+&lt;li&gt;Configure spam filters to protect your organization from people impersonating employees from other domain names. On Google Workspace/Gmail, this setting is called &lt;strong&gt;Protect against spoofing of employee names&lt;/strong&gt;, and you should enable it along with &lt;strong&gt;Protect against inbound emails spoofing your domain&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can find detailed instructions on configuring Google Workspace in the &lt;a href="https://fleetdm.com/handbook/security#email-authentication"&gt;Fleet handbook&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="online-banking-configuration"&gt;Online banking configuration&lt;/h2&gt;
+&lt;p&gt;The best email configuration ever is not enough to protect from BEC and other types of social engineering attacks. Something will always slip by, and we must assume that even well-trained employees will fall for a good enough attempt.&lt;/p&gt;
+&lt;p&gt;If you think you can&amp;rsquo;t fall victim to these emails, you probably have not received one that was sufficiently well-targeted and delivered at precisely the right time.&lt;/p&gt;
+&lt;p&gt;As defenders, we often say that while we must always be perfect, attackers only need to succeed once. As &lt;a href="https://www.dragos.com/blog/industry-news/the-myth-of-the-adversary-advantage/"&gt;Joe Slowik&lt;/a&gt; explained in this excellent blog post a couple of years ago, that is seldom true. We defenders have the high ground, but we often fail to leverage it.&lt;/p&gt;
+&lt;p&gt;Since we know the attackers are looking for money, instead of trying to train people to be perfect at spotting scams, which is impossible, let&amp;rsquo;s secure the cash!&lt;/p&gt;
+&lt;h3 id="authentication"&gt;Authentication&lt;/h3&gt;
+&lt;p&gt;If someone can break into your bank accounts directly, they won&amp;rsquo;t need to come up with a convincing email or text message to convince you to move money. It is therefore critical to enable the most advanced security features your bank offers. Unfortunately, in North America, many banks fail to offer any 2FA or only offer SMS-based 2FA, which is the weakest form of 2FA but is still better than nothing.&lt;/p&gt;
+&lt;ol start="0"&gt;
+&lt;li&gt;Keep the number of people with online banking access as low as possible.&lt;/li&gt;
+&lt;li&gt;If available, enable 2FA. FIDO U2F, although very rare right now with banks, is preferable. Otherwise, use app-based 2FA. As a last resort, use SMS 2FA.&lt;/li&gt;
+&lt;li&gt;If a setting exists to make 2FA prompt either &lt;em&gt;always&lt;/em&gt; or &lt;em&gt;when the risk level is high&lt;/em&gt;, set it to &lt;em&gt;always&lt;/em&gt;. Weaker options leave the doors wide open for someone to bypass 2FA.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Some banks allow organizational-level controls, but most do not. You might have to talk to everyone with access to your online banking and check their 2FA configuration, but if you don&amp;rsquo;t have more than a handful, it&amp;rsquo;s worth doing.&lt;/p&gt;
+&lt;h3 id="dual-control-for-configuration"&gt;Dual control for configuration&lt;/h3&gt;
+&lt;p&gt;Many settings we recommend configuring require high privilege access to online banking. We have to assume that a well-informed attacker would be able to trick someone into changing those.&lt;/p&gt;
+&lt;p&gt;By enabling dual control, one administrator can make a change, but it will not be active until a second one approves it. This makes it much harder for social engineering attacks to succeed and protects these settings if a single account is compromised.&lt;/p&gt;
+&lt;h3 id="alerting"&gt;Alerting&lt;/h3&gt;
+&lt;p&gt;Alerts are often triggered when something bad has already happened, but sometimes, there might still be time to fix things before they worsen.&lt;/p&gt;
+&lt;p&gt;Depending on your bank, you might have various alerts you can configure. For example, &lt;a href="https://www.svb.com/private-bank/help/resources/digital-banking/managing-digital-banking-alerts"&gt;SVB&lt;/a&gt; &lt;del&gt;has&lt;/del&gt; had security alerts as well as transaction alerts.&lt;/p&gt;
+&lt;p&gt;If possible, enable at least the following:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Alert when a new recipient is added&lt;/li&gt;
+&lt;li&gt;Alert when a wire transfer is created (domestic or international)&lt;/li&gt;
+&lt;li&gt;Alert when an external transfer is created&lt;/li&gt;
+&lt;li&gt;Alert when an address or other contact information is changed&lt;/li&gt;
+&lt;li&gt;Alert on any transaction above a certain threshold, such as $10,000&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Banks typically deliver these alerts via email, which is not ideal for rapid awareness. To improve that, create an email address never used anywhere else specifically for these alerts. You&amp;rsquo;ll then be able to integrate that mailbox to other tools, like Slack, by using a &lt;a href="https://slack.com/help/articles/206819278-Send-emails-to-Slack#:~:text=To%20send%20an%20email%20to,see%20your%20email%20in%20Slack."&gt;forwarding address&lt;/a&gt;.
+With this configuration, you can deliver these alerts in your administrative or accounting channel, where everyone can see them, create a thread and ask questions.&lt;/p&gt;
+&lt;p&gt;On top of email alerts, inform your accounting department that they should pay attention to push notifications from your online banking application. If you can keep the amount of &amp;ldquo;false positives&amp;rdquo; down and your accounting and finance are all in the same time zone, have a rotation for who will let the app notify them even when in do not disturb mode.&lt;/p&gt;
+&lt;h3 id="dual-and-triple-approval"&gt;Dual and triple approval&lt;/h3&gt;
+&lt;p&gt;Most business banks allow customers to set thresholds above which the system will require multiple approvals.
+A threshold of $10,000 before a second approval is needed makes sure that if an attacker compromised a single person, they could only send away money in $10,000 batches. Alerting remains essential as the total cost can grow pretty quickly, but it is much safer than allowing a single person to move millions of dollars.&lt;/p&gt;
+&lt;p&gt;Consider requiring three approvals for substantial transactions, as long as your team is large enough to accommodate this even when people are on vacation or unavailable for any other reason.&lt;/p&gt;
+&lt;h3 id="ach-filters"&gt;ACH filters&lt;/h3&gt;
+&lt;p&gt;ACH stands for Automated Clearing House, a network used for direct payments, especially in the US. If your company is in the US and deals with US vendors, you probably send most of your payments with ACH.&lt;/p&gt;
+&lt;p&gt;Many banks offer ACH filters on business accounts. These filters work like many security controls, using one of two main methods:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In deny list mode, where you provide criteria to deny payments&lt;/li&gt;
+&lt;li&gt;In allow list mode, where you give criteria to allow payments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Allow listing is safer but requires more work to implement. Some banks allow combinations of vendors and amounts, while others only allow lists of vendors.&lt;/p&gt;
+&lt;p&gt;Before implementing ACH filters, obtain a list of all ACH transfers made in the last 18 months. Identify the vendors you have that are still active, the average amount you pay them, plus a buffer to cover increases, and then provide this list to your bank to enable ACH filtering in allow list mode. Have every other payment generate an &lt;strong&gt;exception&lt;/strong&gt; that will require manual intervention.&lt;/p&gt;
+&lt;p&gt;That way, it will be much harder for a single person to send a large amount of money to an unauthorized vendor, and accidentally sending large transfers to legit vendors will be blocked.&lt;/p&gt;
+&lt;h3 id="training"&gt;Training&lt;/h3&gt;
+&lt;p&gt;To protect against BEC, we will always need to train people. No matter what technical controls are in place, by using urgency and well-crafted pretexts, criminals will always find a way to trick people into acting against the company&amp;rsquo;s best interests.&lt;/p&gt;
+&lt;p&gt;If you require advanced training before implementing these basic controls, you fail your employees by not providing a system and processes with essential protection. Security teams and organizations must design and configure systems where they are reasonably safe before putting the burden of security on the end-users. Of course, security is everyone&amp;rsquo;s responsibility, but how would you feel if your security team reminded you not to type your password on phishing websites before they had implemented 2FA for remote access?&lt;/p&gt;
+&lt;h2 id="checklist"&gt;Checklist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Access to email requires 2FA&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Phishing and spam filters are configured with strict settings to prevent user and domain spoofing&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Access to online banking requires 2FA&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Configuration changes require dual control&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Alerting is enabled&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Money transfers require a second or third approval with sensible thresholds&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; ACH filtering is in place in allow list mode&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; All employees with access to online banking have received BEC training&lt;/li&gt;
+&lt;/ul&gt;</content></item></channel></rss>
